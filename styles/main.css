@@ -1,1 +1,85 @@
-body{background-color:#252525}
+.topbar{position:fixed; top:0px;}
+.container-fluid{width:1200px; margin:auto;}
+
+a{
+  -moz-transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.sidebar a:hover{
+  color:#0181EB;
+}
+.sidebar a{
+  color: black;
+}
+/*首页*/
+{margin:10px 0;padding:0 5px;}
+ .bloginf{
+  display:inline-block;
+  *display:inline;
+  zoom:1;
+  position:relative;
+  vertical-align:top;
+  width:250px;
+  height:190px;
+  padding:18px;
+  margin:0 0 14px 14px;
+  background:#EEE;
+  word-wrap:break-word;
+}
+ .bloginf::after{
+  content:'';
+  z-index:-1;
+  position:absolute;
+  left:auto;
+  right:22px;
+  bottom:13px;
+  width:70%;
+  height:55%;
+  background:#fdf5cb;
+  width:255px\9;
+  height:220px\9;
+  right:10px\9;
+  bottom:14px\9;
+  -webkit-box-shadow:6px 10px 13px rgba(0,0,0,0.3);
+  -moz-box-shadow:6px 10px 13px rgba(0,0,0,0.3);
+  box-shadow:6px 10px 13px rgba(0,0,0,0.3);
+  -webkit-transform:skew(16deg) rotate(3deg);
+  -moz-transform:skew(16deg) rotate(3deg);
+  transform:skew(16deg) rotate(3deg);
+}
+ .bloginf:hover {
+  background-color:whiteSmoke;
+}
+ .bloginf:hover:after {
+  -webkit-box-shadow:6px 10px 13px rgba(0,0,0,0.2);
+  -moz-box-shadow:6px 10px 13px rgba(0,0,0,0.2);
+  box-shadow:6px 10px 13px rgba(0,0,0,0.2);
+}
+ .bloginf .join a {color: #C35D0E; text-decoration:none;}
+ .bloginf .join a:hover {color: #C35D0E; text-decoration: underline;}
+ .bloginf .name{
+  font-family:"微软雅黑", "宋体";
+  font-size:24px;
+  color:#333;
+  margin-bottom:16px;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 28px;
+  cursor: default;
+}
+ .bloginf .name a {
+  color: #333;
+  text-decoration:none;
+}
+ .bloginf .name a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+ .bloginf .author{margin-bottom:15px;}
+ .bloginf .author a{color:#666;text-decoration:underline;margin-right:5px;}
+ .bloginf .author a:hover{text-decoration:none;}
+ .bloginf .description{color:#333;height:114px;overflow: hidden;}

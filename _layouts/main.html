@@ -1,0 +1,14 @@
+---
+layout: default
+---
+  <!-- Example row of columns -->
+  {% for post in site.posts %}
+  <div class="bloginf">
+    <div class="text">
+    <p class="name"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+    <p class="author">由 {{ post.author }} 于 <span class="date">{{ post.date | date_to_string }}</span>创建</p>
+    <p class="description">{{ post.summary }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
