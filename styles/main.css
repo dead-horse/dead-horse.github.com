@@ -7,6 +7,12 @@ a{
   -o-transition: color 0.3s;
   transition: color 0.3s;
 }
+footer{
+  text-align:center;
+}
+.content{
+  min-height: 500px;
+}
 .sidebar a:hover{
   color:#0181EB;
 }
