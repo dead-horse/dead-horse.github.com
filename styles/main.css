@@ -56,7 +56,7 @@ footer{
   transform:skew(16deg) rotate(3deg);
 }
  .bloginf:hover {
-  background-color:whiteSmoke;
+  background-color:#DDD;
 }
  .bloginf:hover:after {
   -webkit-box-shadow:6px 10px 13px rgba(0,0,0,0.2);
@@ -89,3 +89,9 @@ footer{
  .bloginf .author a{color:#666;text-decoration:underline;margin-right:5px;}
  .bloginf .author a:hover{text-decoration:none;}
  .bloginf .description{color:#333;height:114px;overflow: hidden;}
+ 
+.keywords{
+  position:absolute;
+  top:190px;
+  right:30px;
+}

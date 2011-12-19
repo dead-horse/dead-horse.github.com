@@ -8,6 +8,7 @@ layout: default
     <p class="name"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
     <p class="author">由 {{ post.author }} 于 <span class="date">{{ post.date | date_to_string }}</span>创建</p>
     <p class="description">{{ post.summary }}</p>
+    <div class="keywords">{{ post.keywords }}</div>
     </div>
   </div>
   {% endfor %}
