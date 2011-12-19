@@ -1,8 +1,9 @@
 ---
-title:nodejs模块connect分析
-summary:结合connect（v 1.8）的源码，对connect这一个高扩展性的nodejs web中间件框架进行分析，包括其部分重要中间件。
-keyword:nodejs,connect,middleware
-layout:post
+layout : post
+title : nodejs模块connect分析
+summary : 结合connect（v 1.8）的源码，对connect这一个高扩展性的nodejs web中间件框架进行分析，包括其部分重要中间件。
+keywords : nodejs,connect,middleware
+author : dead_horse
 ---
 
 ###简介
