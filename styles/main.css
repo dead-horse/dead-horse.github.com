@@ -21,6 +21,7 @@ footer{
 }
 .sidebar a{
   color: black;
+  padding:0px;
 }
 /*首页*/
 {margin:10px 0;padding:0 5px;}
