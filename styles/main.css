@@ -1,11 +1,3 @@
-body{
-  font-family:雅黑;
-}
-.sidebar {position:fixed;top:80px;}
-.topbar{position:fixed; top:0px;}
-.brand{margin-left:80px;}
-.container-fluid{width:1200px; margin:auto;}
-
 a{
   -moz-transition: color 0.3s;
   -webkit-transition: color 0.3s;
