@@ -34,7 +34,9 @@ function bindClick(){
         }
       }
       if(j===wlen){
-        blog.hide();
+        blog.hide('normal');
+      }else{
+        blog.show('normal');
       }
     }
   })
