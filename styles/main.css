@@ -2,6 +2,7 @@ body{
   font-family:雅黑;
 }
 .topbar{position:fixed; top:0px;}
+.topbar a{margin-left:80px;}
 .container-fluid{width:1200px; margin:auto;}
 
 a{
@@ -16,6 +17,10 @@ footer{
 .content{
   min-height: 500px;
 }
+.sidebar {
+  position:fixed;
+  top:80px;
+}
 .sidebar a:hover{
   color:#0181EB;
 }
@@ -24,6 +29,9 @@ footer{
 }
 .well{
   padding:0px;
+}
+.well li{
+  padding:5px;
 }
 /*首页*/
 {margin:10px 0;padding:0 5px;}

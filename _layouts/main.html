@@ -10,7 +10,7 @@ layout: default
         </div> 
       </div> 
     <div class="content">
-    {% for post in site.posts %}
+    {% for post in site.posts limit 10%}
     <span style="display:none;" class="post-keywords">{{ post.keywords }}</span>
     <div class="bloginf">
       <div class="text">
