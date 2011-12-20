@@ -48,7 +48,7 @@ function getCloud(){
   //get all the key words
   for(var i=0, len=arrKeyWords.length; i!=len; ++i){
     var keyWords = $(arrKeyWords[i]);
-    words.concat(keyWords.html().split(','));
+    words = words.concat(keyWords.html().split(','));
   }
   //get the tags {keywords:num}
   var tags= {};
