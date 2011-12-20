@@ -2,7 +2,7 @@ body{
   font-family:雅黑;
 }
 .topbar{position:fixed; top:0px;}
-.topbar a{margin-left:80px;}
+.brand{margin-left:80px;}
 .container-fluid{width:1200px; margin:auto;}
 
 a{
