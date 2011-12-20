@@ -52,7 +52,7 @@ function getCloud(){
   }
   //get the tags {keywords:num}
   var tags= {};
-  for(var i=0, len=words.length; i!=length; ++i){
+  for(var i=0, len=words.length; i!=len; ++i){
     var word = words[i];
     tags[word] = tags[word] ? tags[word]+1 : 1;
   }
