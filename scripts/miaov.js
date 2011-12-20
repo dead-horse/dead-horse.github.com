@@ -1,4 +1,4 @@
-var radius = 120;
+var radius = 80;
 var dtr = Math.PI/180;
 var d=300;
 

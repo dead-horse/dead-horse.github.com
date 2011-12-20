@@ -75,4 +75,5 @@ function getCloud(){
     htmls.push('</a>');
   }
   $('#cloud-tags').html(htmls.join(''));
+    bindClick();
 }

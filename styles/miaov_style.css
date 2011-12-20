@@ -1,5 +1,5 @@
-#cloud-tags {position:relative; width:150px; height:150px; margin-left:-10px; }
-#cloud-tags a {position:absolute; top:0px; left:0px; font-family: Microsoft YaHei; color:#CCC; font-weight:bold; text-decoration:none; padding: 3px 6px; }
+#cloud-tags {position:relative; width:200px; height:200px; margin-left:-10px; }
+#cloud-tags a {position:absolute; top:0px; left:0px; font-family: Microsoft YaHei; color:#333; font-weight:bold; text-decoration:none; padding: 3px 6px; }
 #cloud-tags a:hover {border: 1px solid #CCC;}
 #cloud-tags .blue {color:blue;}
 #cloud-tags .red {color:red;}
