@@ -24,6 +24,7 @@
    <link href="/styles/bootstrap.min.css" rel="stylesheet">
    <link href="/styles/main.css" rel="stylesheet">
    <link rel="stylesheet" href="/styles/syntax.css" type="text/css"> 
+   <link rel="stylesheet" href="/styles/miaov_style.css" type="text/css"> 
     <style type="text/css"> 
       body {  
         padding-top: 60px;
@@ -38,7 +39,8 @@
     
     <!-- script -->
     <script src="/scripts/jquery-1.6.2.min.js" type="text/javascript"></script>
-    <script src="/scripts/main.js" type="text/javascript"></script>    
+    <script src="/scripts/main.js" type="text/javascript"></script>
+    <script src="/scripts/miaov.js" type="text/javascript"></script>    
   </head> 
  
   <body> 
@@ -59,11 +61,16 @@
     <div class="container-fluid"> 
       <div class="sidebar"> 
         <div class="well"> 
+          <h5>tags</h5>
+          <div id="cloud-tags">
+          </div>
           <h5>Recent Posts</h5> 
           <ul> 
           {% for post in site.posts %}
           <li>
             <a href="{{ post.url }}">{{ post.title }}</a>
+            <span style="display:none;" class="post-keywords">post.keywords</span>
+          </li>
           {% endfor %}   
           </ul> 
         </div> 
