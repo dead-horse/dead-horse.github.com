@@ -68,7 +68,7 @@ function getCloud(){
   var htmls = [];
   for(var key in tags){
     var size = Math.ceil((tags[key]-1)*times) + minSize;
-    htmls.push('<a href="javascript:void(0) class="key-word" style="font-size:');
+    htmls.push('<a href="javascript:void(0)" class="key-word" style="font-size:');
     htmls.push(size);
     htmls.push('px">');
     htmls.push(key);
