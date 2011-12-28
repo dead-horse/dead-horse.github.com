@@ -29,25 +29,24 @@ connect继承自http/https。通过connect创建一个http|https server，提供
 在server收到请求触发request事件的时候，connect开始执行它的中间件。
 中间件的一般形式是：
 {% highlight javascript %}
+var settings = {} //默认配置
 function middleware(options){
-  var options = options || {};  
-  connect.utils.merge(defaultOptions, options);  //中间件的配置
+  options = options || {};  
+  connect.utils.merge(settings, options);  //中间件的配置
   return function(req, res, next){ //如果调用了next，就会执行之后的中间件
-    
+    //do something when onRequest
   }
 }
 connect.use('/', middleware(options));  //引入中间件
 {% endhighlight %}
-在同一个server上可以引入多个中间件，它们都是跟某个path绑定，根据不同的请求url，被调用的中间件也可能会不同。
-中间件是串行执行的，可以一直链式执行到底(一直next)也可以中途返回response跳过后面的。因此中间件的绑定顺序也是相当重要的。   
-在connect中，所有通过connect.use(route, handle)被引入的中间件handle，都与对应的route结合为一个对象，存放在栈中，每个请求过来的时候，
-从栈中顺序取出path与请求url相匹配的handle执行，直到未被handle调用next()释放或者全部handle执行完成。   
+在同一个server上可以引入多个中间件，它们都是跟某个path绑定，根据不同的请求url，被调用的中间件也可能会不同。中间件是串行执行的，可以一直链式执行到底(一直next)也可以中途返回response跳过后面的。因此中间件的绑定顺序也是相当重要的。   
+在connect中，所有通过connect.use(route, handle)被引入的中间件handle，都与对应的route结合为一个对象，存放在栈中，每个请求过来的时候，从栈中顺序取出path与请求url相匹配的handle执行，直到未被handle调用next()释放或者全部handle执行完成。   
 
 ###扩展
 从connect的设计思路上来看，中间件的扩展是非常容易的，只需要按照它的规则就可以写出自己想要的中间件并融入其中。   
 
 ###实现
-下面是connect的主体代码（HTTP部分），实现简洁。   
+最后贴出connect的主体代码（HTTP部分），实现相当漂亮。   
 {% highlight javascript %}
 function createServer() {
   if ('object' == typeof arguments[0]) {
@@ -204,5 +203,3 @@ Server.prototype.handle = function(req, res, out) {
   next();
 };
 {% endhighlight %}
-
-EOF

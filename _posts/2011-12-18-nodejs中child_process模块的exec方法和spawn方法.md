@@ -84,5 +84,3 @@ author: dead_horse
 ###使用注意
   可以看出，exec在使用的便捷性上要超过spawn，且执行速度上也相差无几。不过这种便携性是要付出一定代价的。在exec的options中，有一项是maxBuffer，如果执行的command输出超出了这个长度，不管是采用回调函数方式，还是emit data事件方式传递结果，都会抛出maxBuffer exceeded异常，并且杀死子进程。此时子进程可能已经执行完成（maxBuffer和需要长度相差不大，在收到最后一个数据包的时候才超出），也可能是只执行了一半。因此如果需要使用exec，就要慎重设置maxBuffer(和timeout)，或者对执行的命令采用静默方式(同时可以略微提升执行速度)。  
   ps:感觉nodejs可以提供一个方法，把exec的回调函数传递结果（maxBuffer限制）去掉，保留exec的参数传递方式，就方便我这种小白了..  
-
-                                  -EOF-
