@@ -10,11 +10,9 @@ author: dead_horse
  * 图片地图
  * CSS Sprites
  * 内联图片(可以放在CSS中，跨页面时可以缓存)
-
 ```html
 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQA..." alt="内联图片">
 ```
-
  * 合并CSS和JS文件
 
 ### 二、使用CND
