@@ -1,6 +1,6 @@
 ---
 layout: default
-tittle: 技术文章
+title: 技术文章
 ---
   <div class="sidebar"> 
         <div class="well"> 
@@ -11,14 +11,14 @@ tittle: 技术文章
         </div> 
       </div> 
     <div class="content">
-    {% for note in site.notes%}
-    <span style="display:none;" class="post-keywords">{{ note.keywords }}</span>
+    {% for post in site.posts limit 10%}
+    <span style="display:none;" class="post-keywords">{{ post.keywords }}</span>
     <div class="bloginf">
       <div class="text">
-      <p class="name"><a href="{{ post.url }}" title="{{ post.title }}">{{ note.title }}</a></p>
-      <p class="author">由 {{ note.author }} 于 <span class="date">{{ note.date | date_to_string }}</span>创建</p>
-      <p class="description">{{ note.summary }}</p>
-      <div class="keywords">{{ note.keywords }}</div>
+      <p class="name"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+      <p class="author">由 {{ post.author }} 于 <span class="date">{{ post.date | date_to_string }}</span>创建</p>
+      <p class="description">{{ post.summary }}</p>
+      <div class="keywords">{{ post.keywords }}</div>
       </div>
     </div>
     {% endfor %}
