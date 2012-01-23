@@ -1,5 +1,6 @@
 ---
 layout: post
+category : blog
 title: exec与spawn方法的区别与陷阱
 keywords: nodejs,child_process
 summary: nodejs child_process子模块中，exec与spawn方法的区别与陷阱

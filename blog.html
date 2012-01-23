@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 个人博客 
+title: 技术文章
 ---
   <div class="sidebar"> 
         <div class="well"> 
@@ -12,6 +12,7 @@ title: 个人博客
       </div> 
     <div class="content">
     {% for post in site.posts %}
+    {% if post.category==="blog" %}
     <span style="display:none;" class="post-keywords">{{ post.keywords }}</span>
     <div class="bloginf">
       <div class="text">
@@ -21,6 +22,7 @@ title: 个人博客
       <div class="keywords">{{ post.keywords }}</div>
       </div>
     </div>
+    {% endif %}
     {% endfor %}
   </div>
 
