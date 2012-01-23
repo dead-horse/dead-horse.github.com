@@ -1,0 +1,25 @@
+---
+layout: default
+---
+  <div class="sidebar"> 
+        <div class="well"> 
+        <iframe width="300" height="400" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&ptype=1&speed=0&skin=2&isTitle=1&noborder=1&isWeibo=1&uid=1774310572&verifier=253c5023&dpc=1"></iframe> 
+          <h5>标签云</h5>
+          <div id="cloud-tags">
+          </div>
+        </div> 
+      </div> 
+    <div class="content">
+    {% for post in site.posts limit 10%}
+    <span style="display:none;" class="post-keywords">{{ post.keywords }}</span>
+    <div class="bloginf">
+      <div class="text">
+      <p class="name"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></p>
+      <p class="author">由 {{ post.author }} 于 <span class="date">{{ post.date | date_to_string }}</span>创建</p>
+      <p class="description">{{ post.summary }}</p>
+      <div class="keywords">{{ post.keywords }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
