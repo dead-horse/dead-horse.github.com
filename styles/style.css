@@ -122,9 +122,10 @@ nav ul li.subscribe a {
 	position: relative;
 	margin-bottom: 50px;
 	padding: 44px;
-	background: url("../images/introbkg.jpg") fixed;
-	height: 90px;
-	/* background size */
+	background: url("../images/introbkg.jpg");
+	width: 872px;
+        height: 116px;
+        /* background size */
 	-webkit-background-size: 100%;
 	-o-background-size: 100%;
 	-khtml-background-size: 100%;
