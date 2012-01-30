@@ -68,9 +68,11 @@ a{
   -o-transition: color 0.3s;
   transition: color 0.3s;
   color: #4F7E12;
+  text-decoration: none;
 }
 a:hover {
   color: #000;
+  text-decoration: underline;
 }
 /* nav */
 
@@ -242,8 +244,6 @@ aside section ul {
 	
 aside section ul li a {
 	display: block;
-	text-decoration: none;
-	color: #000;
 	}
 		
 aside section ul li a:hover {
