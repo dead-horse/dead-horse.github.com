@@ -67,6 +67,10 @@ a{
   -webkit-transition: color 0.3s;
   -o-transition: color 0.3s;
   transition: color 0.3s;
+  color: #4F7E12;
+}
+a: hover{
+  color: #000;
 }
 /* nav */
 
@@ -196,9 +200,6 @@ aside {
 	margin:0; 
 	padding:0;
 	}
-aside a:hover{
-  color : #36c;
-}
 /* article */
 .articlecontent header p, .blogPost header p a {
 	font-size: 14px;
@@ -206,13 +207,6 @@ aside a:hover{
 	color: #777;
 	}
 
-.articlecontent a {
-	color: #4F7E12;
-	}
-	
-.articlecontent a:hover {
-	color: #000;
-	}
 	
 .articlecontent header p a:hover {
 	text-decoration: none;
