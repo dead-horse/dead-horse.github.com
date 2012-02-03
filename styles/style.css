@@ -203,6 +203,14 @@ nav ul li.subscribe a {
 #content li{
   margin : 2px;
 }
+#content pre{
+  overflow: scroll;
+  padding: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ddd;
+  margin: 10px;
+}
 aside {
 	float: right;
 	text-align: left; 
