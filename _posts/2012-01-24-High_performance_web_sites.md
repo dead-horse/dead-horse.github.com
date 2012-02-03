@@ -10,7 +10,7 @@ author: dead_horse
 ### 一、减少HTTP请求
  * 图片地图
  * CSS Sprites
- * 内联图片(可以放在CSS中，跨页面时可以缓存)
+ * 内联图片(可以放在CSS中，跨页面时可以缓存)  
 ```
 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQA..." alt="内联图片">
 ```
