@@ -265,10 +265,6 @@ aside section ul {
 	color: #4F7E12;
 	}
 	
-aside section ul li a {
-	display: block;
-	}
-		
 aside section ul li a:hover {
 	text-decoration: underline;
 	}
