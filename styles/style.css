@@ -204,7 +204,7 @@ nav ul li.subscribe a {
   margin : 2px;
 }
 #content pre{
-  overflow: scroll;
+  overflow: auto;
   padding: 10px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
