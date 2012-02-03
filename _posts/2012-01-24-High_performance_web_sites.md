@@ -1,6 +1,6 @@
 ---
 layout: post
-category : 读书笔记
+category : reading_note 
 title: 高性能网站的14条前端规则
 keywords: 高性能网站建设指南, 前端
 summary: 《高性能网站建设指南》读书笔记，前端网页的十四条规则。
