@@ -194,7 +194,15 @@ nav ul li.subscribe a {
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 }
-
+#content .date{
+  margin-left: 500px;
+}
+#content ul{
+  margin-left: 30px;
+}
+#content li{
+  margin : 2px;
+}
 aside {
 	float: right;
 	text-align: left; 
@@ -256,6 +264,7 @@ footer {
 	background: #222;
 	width: 960px;
 	color: #fff;
+	margin-top: 20px;
 	margin-bottom: 10px;
 	/* curved border radius */
 	-moz-border-radius: 10px;
@@ -280,3 +289,10 @@ footer a:hover {
 footer p{
 	text-align: center;
 };
+
+#blogs ul{
+  list-style: none;
+}
+#blogs li{
+  margin 4px;
+}
