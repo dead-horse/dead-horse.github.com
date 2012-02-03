@@ -11,8 +11,7 @@ author: dead_horse
  * 图片地图
  * CSS Sprites
  * 内联图片(可以放在CSS中，跨页面时可以缓存)
-
-```html
+```
 <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQA..." alt="内联图片">
 ```
  * 合并CSS和JS文件
@@ -20,8 +19,8 @@ author: dead_horse
 ### 二、使用CND
 
 ### 三、添加Expires头
- * Expires头： @Expires: THu, 15 Apr 2010 20:00:00 GMT@   
- * Max-Age：@Cache-Control: max-age-315360000@
+ * Expires头： ```Expires: THu, 15 Apr 2010 20:00:00 GMT```   
+ * Max-Age：```Cache-Control: max-age-315360000```
  * Max-Age不需要每次计算时间。为不会经常变化的图片、JS、CSS等添加缓存。
  * 通过修改文件名强制刷新缓存（版本号）
 
@@ -30,13 +29,13 @@ author: dead_horse
  * HTML，脚本，XML，JSON等任何文本响应
  * 图片和PDF不需要压缩，已经是压缩格式了
  * 压缩成本在于服务器端需要耗费CPU时间进行压缩
- * 代理缓存问题：需要让代理缓存多份（未压缩和压缩）。@Vary: Accept-Encoding@，为Accept-Encoding的每个值缓存一份
+ * 代理缓存问题：需要让代理缓存多份（未压缩和压缩）。```Vary: Accept-Encoding```，为Accept-Encoding的每个值缓存一份
  * 考虑边缘情况，浏览器对gzip的支持
- * 可以通过@Cache-Control: Private@来禁用代理缓存，避免代理+浏览器边缘情形缺陷
+ * 可以通过```Cache-Control: Private```来禁用代理缓存，避免代理+浏览器边缘情形缺陷
 
 ### 五、CSS放在顶部
  * CSS放在底部，浏览器会阻塞内容逐步呈现
- * CSS放在顶部通过**@import**引入的时候，可能会出现和放在底部一样的效果
+ * CSS放在顶部通过```@import```引入的时候，可能会出现和放在底部一样的效果
 
 ### 六、JS放在底部
  * 脚本下载会阻塞后面内容的呈现
@@ -68,7 +67,7 @@ author: dead_horse
  * 通过模版系统中实现脚本版本控制模块
 
 ### 十三、配置Etag
- * ETag会在返回结果生成一串唯一标识字符串，格式：@ETag: "10c24bc-4ab-457e1c1f"@，必须有引号
+ * ETag会在返回结果生成一串唯一标识字符串，格式：```ETag: "10c24bc-4ab-457e1c1f"```，必须有引号
  * 在集群服务器和代理的情况下可能带来问题
  * 对ETag进行重新配置，或者移除
 
