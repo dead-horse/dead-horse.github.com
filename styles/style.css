@@ -211,6 +211,14 @@ nav ul li.subscribe a {
   background-color: #ddd;
   margin: 10px;
 }
+article code {
+  font-size: 90%!important;
+  background-color: ghostWhite!important;
+  color: #444!important;
+  padding: 0 .2em!important;
+  border: 1px solid #DEDEDE!important;
+  border-image: initial;
+}
 aside {
 	float: right;
 	text-align: left; 
