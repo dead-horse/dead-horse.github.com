@@ -1,5 +1,5 @@
 ---
-layout: defalut
+layout: default
 ---
 # About Me
 网名：**dead_horse/死马**  
