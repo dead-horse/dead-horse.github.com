@@ -1,6 +1,6 @@
 ---
 layout : post
-category : c++
+category : cpp
 title : g++基础知识
 summary : 一些简单的g++编译命令与常用选项的作用。
 keywords : c++,g++
