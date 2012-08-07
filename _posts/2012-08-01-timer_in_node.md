@@ -7,7 +7,8 @@ keywords : nodejs,timer
 author : dead_horse
 ---
 
- ### 一个案例   
+### 一个案例   
+
 ```
 var http = require('http');
 
@@ -63,7 +64,7 @@ var _get = function(options, timeout, cb) {
 
  于是我分别对这两个方法进行了一下测试，发现两种方法的效率相差无几。果然，node对timeout进行了一定的优化，只能翻开node的源码一探究竟。   
 
- ### node中timer的实现   
+### node中timer的实现   
  源码在此：[timer.js](https://github.com/joyent/node/blob/master/lib/timers.js).   
  在源码中，发现了node对于setTimeout的优化：
   1. 所有timer按照超时时间分组，所有超时时间相同的timer都存放到一个list里面，按时间顺序排列。   
@@ -132,4 +133,4 @@ var _get = function(options, timeout, cb) {
     delete lists[msecs];
   };
    ```
-  所有相同timeout的timer的背后，同一时间内只会有一个定时器，回到之前的`get`方法，尽管设置了很多个timer，但是其背后都只是存放到一个链表中，node会和`_get`中的方式类似去遍历链表。因此两者的性能相差不多。   
+  所有相同timeout的timer的背后，同一时间内只会有一个定时器，回到之前的`get`方法，尽管设置了很多个timer，但是其背后都只是存放到一个链表中，node会和`_get`中的方式类似去遍历链表。因此两者的性能相差不多。     
