@@ -64,12 +64,12 @@ var get = function(options, timeout, cb) {
   {% endhighlight %}
    
 
- 于是我分别对这两个方法进行了一下测试，发现两种方法的效率相差无几。果然，node对timeout进行了一定的优化，只能翻开node的源码一探究竟。   
+ 于是我分别对这两个方法进行了一下测试，发现两种方法的效率相差无几。果然，node对timeout进行了一定的优化，只能翻开node的源码一探究竟。    
 
 ### node中timer的实现   
  源码在此：[timer.js](https://github.com/joyent/node/blob/master/lib/timers.js).   
- 在源码中，发现了node对于setTimeout的优化：
-  1. 所有timer按照超时时间分组，所有超时时间相同的timer都存放到一个list里面，按时间顺序排列。   
+ 在源码中，发现了node对于setTimeout的优化：   
+  * 所有timer按照超时时间分组，所有超时时间相同的timer都存放到一个list里面，按时间顺序排列。   
   {% highlight javascript %}   
   exports.active = function(item) {
   var msecs = item._idleTimeout;
@@ -85,7 +85,7 @@ var get = function(options, timeout, cb) {
   }
   {% endhighlight %}
    
-  2. 初始化的时候，给一个list设置一个定时器。   
+  * 初始化的时候，给一个list设置一个定时器。   
   {% highlight javascript %}   
   function insert(item, msecs) {
     item._idleStart = Date.now();
@@ -114,7 +114,7 @@ var get = function(options, timeout, cb) {
   }
   {% endhighlight %}
    
-  3. 当定时器到时，从头到尾遍历list，把所有到时的timer都触发，然后从list中删除，遇到未到时的timer，重新设置一个定时器.
+  * 当定时器到时，从头到尾遍历list，把所有到时的timer都触发，然后从list中删除，遇到未到时的timer，重新设置一个定时器.
   {% highlight javascript %}   
   list.ontimeout = function() {
     var now = Date.now();
