@@ -69,6 +69,7 @@ var get = function(options, timeout, cb) {
 ### node中timer的实现   
  源码在此：[timer.js](https://github.com/joyent/node/blob/master/lib/timers.js).   
  在源码中，发现了node对于setTimeout的优化：   
+ 
   * 所有timer按照超时时间分组，所有超时时间相同的timer都存放到一个list里面，按时间顺序排列。   
   {% highlight javascript %}   
   exports.active = function(item) {
