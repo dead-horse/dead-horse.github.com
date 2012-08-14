@@ -55,4 +55,4 @@ function isEmpty(list) {
 }
 {% endhighlight %}
 
-  短短几十行代码，就完整实现了一个双向链表，尽管只实现了上述的几个方法，但是已经足够使用，并且也非常容易扩展，将javascript语言的灵活性展现的淋漓尽致。[源码在此](https://github.com/joyent/node/blob/master/lib/_linklist.js)。而`node`的`setTimeout`也是基于这个版本的链表进行了优化，[详见](http://deadhorse.me/nodejs/2012/08/01/timer_in_node.html)。在你的`node`程序中可以通过`require('_linklist')`来使用，当然最好还是将其拷贝出来当成一个独立文件来引用，毕竟是`node`未公开的模块，指不定哪天就删除了。
+  短短几十行代码，就完整实现了一个双向链表，尽管只实现了上述的几个方法，但是已经足够使用，并且也非常容易扩展，将javascript语言的灵活性展现的淋漓尽致。[源码在此](https://github.com/joyent/node/blob/master/lib/_linklist.js)。而`node`的`setTimeout`也是基于这个版本的链表进行了优化，[详见](http://deadhorse.me/nodejs/2012/08/01/timer_in_node.html)。在你的`node`程序中可以通过`require('_linklist')`来使用，我把它提取出来并添加了其他几个方法，封装成了一个[模块](https://github.com/dead-horse/js-linklist), 可以通过npm安装：npm install linklist.   
