@@ -5,6 +5,7 @@ layout: default
 
 ## javascript   
  [浅谈eval的影响](http://www.otakustay.com/eval-performance-profile/)   
+ [jquery图像剪辑插件](http://odyniec.net/projects/imgareaselect/examples.html)   
 
 ## nodejs   
  [高性能Node.js：来自LinkedIn Mobile的10条优化建议](http://www.rockdai.com/?p=596)   
