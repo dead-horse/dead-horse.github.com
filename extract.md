@@ -11,6 +11,7 @@ layout: default
  [高性能Node.js：来自LinkedIn Mobile的10条优化建议](http://www.rockdai.com/?p=596)   
  [V8 API Reference Guide](http://izs.me/v8-docs/main.html)   
  [用node-inspector调试Node.js](http://www.noanylove.com/2011/12/node-the-inspector-debugging-node-js/)  
+ [Escape the 1.4GB V8 heap limit in Node.js!](http://blog.caustik.com/2012/04/11/escape-the-1-4gb-v8-heap-limit-in-node-js/)  
  
 ## jQuery   
  [jQuery最佳实践](http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html)   
