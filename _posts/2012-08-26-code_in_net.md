@@ -7,7 +7,7 @@ keywords : nodejs,net
 author : dead_horse
 ---
 
-1. 引用`node`源码中的C模块   
+ 1. 引用`node`源码中的C模块   
 
 {% highlight javascript %}   
 // constructor for lazy loading
@@ -17,7 +17,7 @@ function createPipe() {
 }
 {% endhighlight %}   
 
-2. 通过与或操作设置读取标记位   
+ 2. 通过与或操作设置读取标记位   
 
 {% highlight javascript %}   
 
@@ -34,20 +34,20 @@ flags | FLAG_GOT_EOF; //设置标志位
 {% endhighlight %}   
 
 
-3. 字符串与整数的转换   
+ 3. 字符串与整数的转换   
 
 {% highlight javascript %}   
 var secs = ~~(msecs / 1000);
 {% endhighlight %}   
 
-4. 转换对象为Boolean  
+ 4. 转换对象为Boolean  
 
 {% highlight javascript %}   
 var bool = !!input;
 {% endhighlight %}   
 
-5. `process.nextTick`的使用  
-  有些情况下，可能希望在执行完当前事件循环之后再执行一些操作，通过`process.nextTick`将操作放到下一个事件循环去做,这样这些操作将不会影响当前事件循环的其他操作。  
+ 5. `process.nextTick`的使用  
+有些情况下，可能希望在执行完当前事件循环之后再执行一些操作，通过`process.nextTick`将操作放到下一个事件循环去做,这样这些操作将不会影响当前事件循环的其他操作。  
 
 {% highlight javascript %}   
 //in socket.onread, when meet `EOF` 
@@ -65,7 +65,7 @@ process.nextTick(function() {
 {% endhighlight %}   
 通过process.nextTick()，可以保证在调用`_destroy`的时候不会先触发`close`事件。   
 
-6. 格式化输入参数，重新调用自身   
+ 6. 格式化输入参数，重新调用自身   
 
 {% highlight javascript %}   
 Socket.prototype.connect = function(options, cb) {
