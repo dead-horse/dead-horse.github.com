@@ -10,7 +10,7 @@ author : dead_horse
 最近在cnode社区，由@[吴中骅](http://weibo.com/spuout)的一篇关于XSS的[文章](http://snoopyxdy.blog.163.com/blog/static/60117440201284103022779/)，直接导致了社区的人开始在cnode尝试各种攻击。这里总结了一下这次碰到的一些问题与解决方案。   
 
 
-#### 文件上传漏洞   
+### 文件上传漏洞   
   之前nodeclub在上传图片的时候逻辑是这样的：   
 
 {% highlight javascript %}   
@@ -39,7 +39,7 @@ if (savepath.indexOf(path.resolve(userDir)) !== 0) {
 fs.rename(file.path, savepath, callback);
 {% endhighlight %} 
 
-#### 富文本编辑器的XSS   
+### 富文本编辑器的XSS   
 关于XSS，在@[吴中骅](http://weibo.com/spuout)的[文章](http://snoopyxdy.blog.163.com/blog/static/60117440201284103022779/)中已经非常详细的描述了。而cnode社区中，用户发表话题和回复话题也是用的一个支持*markdown*格式的富文本编辑器。之前是没有做过任何XSS防范措施的，于是...你可以直接在里面写：   
 
 {% highlight javascript %}   
@@ -115,10 +115,12 @@ function escape(html) {
 
 因为XSS的手段确实比较多，见[XSS Filter Evasion Cheat Sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)。因此能够做粗暴的HTML escape是最安全的，但是并不是每一个地方都可以通过markdown来代替HTML代码，所以不是每一个地方都能用HTML escape，这个时候就需要其他的手段来过滤XSS漏洞了。   
 1. XSS防范只能通过定义白名单的形式，例如只允许**&lt;p&gt; &lt;div&gt; &lt;a&gt;**标签，只允许**href class style**属性。然后对每一个可能造成XSS的属性进行特定的过滤。   
-2. 现有的XSS过滤模块，一个是[node-validator](https://github.com/chriso/node-validator), 一个是@[雷宗民](http://weibo.com/ucdok)写的[js-xss](https://github.com/leizongmin/js-xss)。
+
+2. 现有的XSS过滤模块，一个是[node-validator](https://github.com/chriso/node-validator), 一个是@[雷宗民](http://weibo.com/ucdok)写的[js-xss](https://github.com/leizongmin/js-xss)。   
+   
 3. 不能够保证XSS模块可以防范住任意的XSS攻击，但是起码能够过滤掉大部分能够想象到的漏洞。[node-validator](https://github.com/chriso/node-validator)的*XSS()*仍然有bug，对于*&lt;p on=&quot;&gt;&lt;/p&gt;*形式的代码，会有双引号不闭合的问题，导致HTML元素测漏。   
 
-#### 模版引擎导致的XSS攻击     
+### 模版引擎导致的XSS攻击     
 cnode社区采用的是ejs作为模版引擎，而在ejs中，提供了两种输出动态数据到页面的方法： 
 
 {% highlight javascript %} 
@@ -135,6 +137,6 @@ cnode社区采用的是ejs作为模版引擎，而在ejs中，提供了两种输
 
 上面两条语句，第一句由于使用的是单引号，用户可以通过构造一个*avatar_url*中带单引号，来截断src属性，后面就可以随意加javascript代码了。   
 
-#### CSRF攻击    
+### CSRF攻击    
 CSRF攻击在node的web开发框架*connect*和*express*等中都有了解决方方案。通过在访客的session中存放一个随机的*_csrf*字段，模版引擎在生成HTML文件的时候将这个*_csrf*值传递到前端，访客提交的任意POST请求，都必须带上这个字段进行验证，保证了只有当前用户在当前页面上可以进行修改的操作。   
 然而当页面存在XSS漏洞的时候，CSRF的这种防范措施就成了浮云。恶意攻击者完全可以通过javascript代码，获取到其他用户的*_csrf*值，并直接模拟用户的POST请求进行服务端数据的更改。
