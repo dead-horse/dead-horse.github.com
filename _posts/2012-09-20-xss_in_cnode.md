@@ -111,12 +111,12 @@ function escape(html) {
 };
 {% endhighlight %} 
 
-而对于markdown生成的**<a>**标签和**<img>**标签中的href属性，必须要做URL有效性检测或者做xss的过滤。这样保证通过markdown生成的HTML代码也是没有XSS漏洞的。   
+而对于markdown生成的**&lt;a&gt;**标签和**&lt;img&gt;**标签中的href属性，必须要做URL有效性检测或者做xss的过滤。这样保证通过markdown生成的HTML代码也是没有XSS漏洞的。   
 
 因为XSS的手段确实比较多，见[XSS Filter Evasion Cheat Sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)。因此能够做粗暴的HTML escape是最安全的，但是并不是每一个地方都可以通过markdown来代替HTML代码，所以不是每一个地方都能用HTML escape，这个时候就需要其他的手段来过滤XSS漏洞了。   
-1. XSS防范只能通过定义白名单的形式，例如只允许**<p> <div> <a>**标签，只允许**href class style**属性。然后对每一个可能造成XSS的属性进行特定的过滤。   
+1. XSS防范只能通过定义白名单的形式，例如只允许**&lt;p&gt; &lt;div&gt; &lt;a&gt;**标签，只允许**href class style**属性。然后对每一个可能造成XSS的属性进行特定的过滤。   
 2. 现有的XSS过滤模块，一个是[node-validator](https://github.com/chriso/node-validator), 一个是@[雷宗民](http://weibo.com/ucdok)写的[js-xss](https://github.com/leizongmin/js-xss)。
-3. 不能够保证XSS模块可以防范住任意的XSS攻击，但是起码能够过滤掉大部分能够想象到的漏洞。[node-validator](https://github.com/chriso/node-validator)的*XSS()*仍然有bug，对于*<p on="></p>*形式的代码，会有双引号不闭合的问题，导致HTML元素测漏。   
+3. 不能够保证XSS模块可以防范住任意的XSS攻击，但是起码能够过滤掉大部分能够想象到的漏洞。[node-validator](https://github.com/chriso/node-validator)的*XSS()*仍然有bug，对于*&lt;p on=&quot;&gt;&lt;/p&gt;*形式的代码，会有双引号不闭合的问题，导致HTML元素测漏。   
 
 #### 模版引擎导致的XSS攻击     
 cnode社区采用的是ejs作为模版引擎，而在ejs中，提供了两种输出动态数据到页面的方法： 
