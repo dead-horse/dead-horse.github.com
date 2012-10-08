@@ -85,8 +85,8 @@ console.log('binding.hello() =', binding.hello());
 }
 {% endhighlight %}
 
-注意事项： 
- * 如果遇到了*exception handling disabled, use -fexceptions to enable*错误，需要添加编译选项*-fexceptions*。如果还是不行，则可能是因为改版本的node-gyp默认是启用了*-fno-exceptions*选项，因此通过*cflags!*和*cflags!_cc*中指定关闭掉这个默认开启的选项。
+注意事项：    
+ * 如果遇到了*exception handling disabled, use -fexceptions to enable*错误，需要添加编译选项*-fexceptions*。如果还是不行，则可能是因为改版本的node-gyp默认是启用了*-fno-exceptions*选项，因此通过*cflags!*和*cflags!_cc*中指定关闭掉这个默认开启的选项。  
  * *conditions*内可以根据一些条件来添加选项，例如根据操作系统来添加一些编译条件。       
  * 依赖的第三方动态链接库可能无法引入，出现这种情况可以把静态库和node-gyp生成的中间文件一起编译成最终的模块。   
 
