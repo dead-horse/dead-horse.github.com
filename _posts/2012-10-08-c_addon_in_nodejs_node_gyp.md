@@ -8,12 +8,12 @@ author : dead_horse
 ---
 
 ### 从node-waf到node-gyp   
-node进入0.8版本之后，开始替换之前编译C++模块的编译工具，从node-waf向[node-gyp](https://github.com/TooTallNate/node-gyp)转换，暂时是两者都支持，之后会不在支持node-waf编译。因此要写node的C++ addon，首先需要了解如何编写node-gyp的配置文件。  
+node进入0.8版本之后，开始替换之前编译C++模块的编译工具，从node-waf向[node-gyp](https://github.com/TooTallNate/node-gyp)转换，暂时是两者都支持，之后会不在支持node-waf编译。因此要写node的C++扩展，首先需要了解如何编写node-gyp的配置文件。  
 node-gyp的配置文件名字为*binding.gyp*,它是一个纯JSON对象，相对于node-waf的配置文件来说，写惯了javascript的同学会更加熟悉。   
 
 ### Hello node-gyp
 先来看一个最简单的使用示例。  
-C addon部分提供了一个hello方法，返回一个字符串*world*:   
+C模块部分提供了一个hello方法，返回一个字符串*world*:   
 
 {% highlight c %}
 #include <node.h>
@@ -86,7 +86,7 @@ console.log('binding.hello() =', binding.hello());
 {% endhighlight %}
 
 注意事项：    
-1. 如果遇到了*exception handling disabled, use -fexceptions to enable*错误，需要添加编译选项*-fexceptions*。如果还是不行，则可能是因为改版本的node-gyp默认是启用了*-fno-exceptions*选项，因此通过*cflags!*和*cflags!_cc*中指定关闭掉这个默认开启的选项。  
+1. 如果遇到了*exception handling disabled, use -fexceptions to enable*错误，需要添加编译选项*-fexceptions*。如果还是不行，则可能是因为该版本的node-gyp默认启用了*-fno-exceptions*选项，因此通过*cflags!*和*cflags!_cc*中指定关闭掉这个默认开启的选项。  
 2. *conditions*内可以根据一些条件来添加选项，例如根据操作系统来添加一些编译条件。       
 3. 依赖的第三方动态链接库可能无法引入，出现这种情况可以把静态库和node-gyp生成的中间文件一起编译成最终的模块。   
 
