@@ -12,7 +12,7 @@ author : dead_horse
 [Node.js C++ addon编写实战（二）之对象转换 ](/nodejs/2012/10/09/c_addon_in_nodejs_object.html)   
 [Node.js C++ addon编写实战（三）之Buffer](/nodejs/2012/10/10/c_addon_in_nodejs_buffer.html)   
 
-上一篇文章介绍到了javascript到v8的数据映射关系和转换方法，然而Node.js除了javascript的数据类型之外，还自己实现了一个数据类型：Buffer。关于Node.js中的Buffer，可以先看一下[这篇文章]（http://cnodejs.org/topic/4f16442ccae1f4aa27001067），详细解析了node中buffer内存策略。   
+上一篇文章介绍到了javascript到v8的数据映射关系和转换方法，然而Node.js除了javascript的数据类型之外，还自己实现了一个数据类型：Buffer。关于Node.js中的Buffer，可以先看一下[这篇文章](http://cnodejs.org/topic/4f16442ccae1f4aa27001067)，详细解析了node中buffer内存策略。   
 
 因为Buffer是独立于v8之外的，且没有相关的C++部分代码的文档，不过相关的接口还是可以通过阅读[源代码](https://github.com/joyent/node/blob/master/src/node_buffer.h)来了解。   
 接下来就开始介绍一下Node.js C++扩展实际开发过程中涉及到Buffer部分的一些处理和注意事项。   
@@ -33,7 +33,7 @@ Handle<Value> length(const Arguments &args) {
 }
 {% endhighlight %}
 
-可以看到，node中的Buffer可以转换成c++ 中的char*，现在再来看看如何将c++中的Buffer传递给Node.js。   
+可以看到，node中的Buffer可以转换成c++ 中的char数组，现在再来看看如何将c++中的Buffer传递给Node.js。   
 方法一: node_buffer.h中可以看到有一个C++ API： *static v8::Handle<v8::Object> New(v8::Handle<v8::String> string);*，因此可以尝试用此API进行转换并传递到node中。   
 
 {% highlight c++ %}
@@ -48,7 +48,7 @@ Handle<Value> transfer(const Arguments& args) {
 可以看到上面代码中的注释，必须要指定传递Buffer的长度，不然有可能会被截断。同时这种方法只适用于编码方式可以被String接受的Buffer传递，例如utf8，iscii。而一些没有编码的Buffer，则可能在生成String的时候就导致了某些字节的错乱，转换会不完全。   
 因此，通过这个C++ API进行Buffer的传递是有条件的，必须要是能编码成String的Buffer才能够使用这个API。  
 
-方法二：曲线救国，将C++中的char *转换成一个short类型的数组，传递到node中，然后再调用node中的*new Buffer(array)*来生成Buffer。   
+方法二：曲线救国，将C++中的char数组转换成一个short类型的数组，传递到node中，然后再调用node中的*new Buffer(array)*来生成Buffer。   
 
 {% highlight c++ %}
 Handle<Value> transferByArray(const Arguments& args) {
