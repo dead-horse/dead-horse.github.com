@@ -7,6 +7,11 @@ keywords : nodejs,C++ addon
 author : dead_horse
 ---
 
+这是一个三篇的系列文章，记录Node.js C++扩展开发中的一些经验与坑。   
+[Node.js C++ addon编写实战（一）之node-gyp](/nodejs/2012/10/08/c_addon_in_nodejs_node_gyp.html)   
+[Node.js C++ addon编写实战（二）之对象转换 ](/nodejs/2012/10/09/c_addon_in_nodejs_object.html)   
+[Node.js C++ addon编写实战（三）之Buffer](/nodejs/2012/10/10/c_addon_in_nodejs_buffer.html)   
+
 正式进入编写Node.js C++模块中编码部分的介绍了。在此之前先罗列一些这方面的资料供参考入门。   
 
  * v8数据结构的手册： [V8 Data Structures](http://izs.me/v8-docs/annotated.html)   
