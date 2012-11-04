@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>EDP lib - EDP基础库建设与维护</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../reveal/css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../reveal/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section style="text-align: center;">
+          <div style="position:absolute; top:35%; left:0; right:0;">
+            <h2>EDP基础库建设与维护</h2>
+            <br />
+            <br />
+            <h3 style="position: absolute; right:150px">不四</h3>
+          </div>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ## Why ?  
+            <hr />
+            * 提升工作效率   
+            * 减少劣质模块引入的bug   
+          </script>
+        </section>
+        <section data-markdown>
+          ## How ?
+          <hr />
+           * 内部模块质量保证   
+           * 新版内部npm支持   
+           * 各个项目组推动落地  
+           * 基础库维护   
+        </section>
+        <section>
+          <section data-markdown>
+            ## 内部模块质量保证   
+            <hr />
+             * 完备的测试        
+             * 注释与文档   
+             * 持续优化   
+          </section>
+
+          <section data-markdown>
+            ## 完备的测试  
+            <hr />
+             * 覆盖率保证   
+               * 95%+的覆盖率  
+             * 异常情况测试  
+               * 内部异常的测试覆盖     
+               * 外部依赖异常测试覆盖  
+               * 网络情况异常测试覆盖   
+               * ...
+             * 底层模块benchmark    
+               * 如果是底层服务模块，最好附带性能测试报告   
+          </section>
+
+          <section data-markdown>
+            ## 注释与文档     
+            <hr />
+             * 完备的注释  
+               * 降低模块接手人的维护成本       
+               * 通过`dox` or `doxmate`进行文档的生成   
+             * 健全的文档   
+               * 方便使用者使用，提升使用效率  
+          </section>
+
+          <section data-markdown>
+            ## 持续优化     
+            <hr />
+             * 每个模块都有人负责   
+             * 及时进行bug fix  
+          </section>
+      </section>
+      <section>
+        <section data-markdown>
+          ## 新版内部npm支持  
+          <hr />
+          * 模块发布与审核机制   
+          * 模块更新检查  
+        </section>
+        <section data-markdown>
+          ## 发布与审核机制  
+          <hr />
+          * 三方包同步需要提交申请  
+           * 保证只有高质量三方包能够进入生产环境 
+           * 减少有隐藏bug的*定时炸弹*  
+          * 二方包发布审核   
+           * 内部开发模块必须通过npm-web平台发布   
+           * 保证内部模块高质量  
+        </section>
+        <section data-markdown>
+          ## npm-web  
+          <hr />
+          ![npm-web](../images/edp_lib/npm_web.png)    
+        </section>
+        <section data-markdown>
+          ## 模块更新检查  
+          <hr />
+          * 通过npm-web与Makefile管理模块更新通知
+           * `npm-web`上设置模块是否必须更新    
+           * `Makefile`中写入检查更新的项  
+        </section>
+        <section data-markdown>
+          ## 更新检查  
+          <hr />
+          ![notify](../images/edp_lib/notify.png)    
+          ![check](../images/edp_lib/check.png)  
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          ## 落地   
+          <hr />
+          * 内部模块介绍推广  
+          * 用基础库里面的模块替换应用方实现  
+          * 应用方反哺基础库  
+        </section>
+        <section data-markdown>
+          ## 内部模块推广介绍  
+          <hr />
+          * 内部分享形式  
+           * show me the code   
+           * ohter ...
+          * 项目技术负责人推广     
+        </section>
+        <section data-markdown>
+          ## 模块落地   
+          <hr />
+          * 将应用内可以用模块替换的部分用内部模块替换  
+           * redis => mredis  
+           * itier => itierskin  
+           * ... 
+        </section>
+        <section data-markdown>
+          ## 反哺基础库  
+          <hr />
+          * 应用提取基础模块，供其他项目重用  
+           * itierskin  
+           * taobaosession  
+           * lastdate  
+           * ...   
+          * 解决项目碰到的难题，作为技术积累  
+           * mredis  
+           * node-hsf   
+           * ...  
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          ## 基础库维护  
+          <hr />
+          * 每个模块有自己的负责人  
+          * 应用内模块使用者反馈    
+          * 基础库维护者保证响应速度  
+        </section>
+        <section data-markdown>
+          ## 模块维护者  
+          <hr />
+          * 模块后续功能性开发与维护性开发  
+          * 迅速响应  
+        </section>
+        <section data-markdown>
+          ## 应用方使用者  
+          <hr />
+          * 保证模块使用方式的正确性  
+          * 对使用到的模块进行反馈  
+          * 反哺基础库  
+        </section>
+        <section data-markdown>
+          ## 基础库维护者  
+          <hr />
+          * 新版内部npm与npm-web功能开发完善  
+          * 推动基础库落地与反馈  
+          * 维护内部npm稳定运行  
+        </section>
+      </section>
+      <section data-markdown>
+        ## Target ?  
+        <hr />
+        * 新版内部npm替换旧版   
+         * 摒弃旧版npm，通过新版npm控制内部模块质量  
+        * 基础库内部各个应用完全落地  
+         * 各应用全面通过基础库内模块提升效率  
+        * 基础库维护与质量保证  
+         * 完善已有库的质量： 测试、文档   
+         * 完善基础库发布标准   
+      </section>
+      <section data-markdown>
+        ## Resource ? 
+        <hr />
+        * dev x 2 （兼职）
+         * 最好是对现有项目或者基础模块有一定了解  
+      </section>
+      <section data-markdown style="text-align: center">
+        <br />
+        <br />
+        ## Thanks
+        ## Q & A
+      </section>
+      </div>
+
+    </div>
+
+    <script src="../reveal/lib/js/head.min.js"></script>
+    <script src="../reveal/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+            keyboard: true,
+            rollingLinks: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
