@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>开发Tips与内部模块</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section style="text-align: center;">
+          <div style="position:absolute; top:35%; left:0; right:0;">
+            <h2>开发Tips与内部模块</h2>
+            <br />
+            <br />
+            <h3 style="position: absolute; right:150px">不四</h3>
+          </div>
+        </section>
+        <section data-markdown>
+          ## 大纲  
+          <hr />
+          1. 目录与配置   
+          2. 项目依赖初始化  
+          3. 测试框架  
+          4. 推荐模块  
+        </section>
+        <section>
+          <section data-markdown>
+            ## 目录与配置   
+             <hr />        
+             * 目录结构  
+             * 推荐配置方式  
+          </section>
+          <section data-markdown>
+            ## [目录结构](http://baike.corp.taobao.com/index.php/Node_Web_%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84)  
+            <hr />   
+            <pre><code contenteditable>
+            |- config/    //外部通过require('./config');来引入配置文件   
+               |- config_daily.js
+               |- config_pre.js
+               |- config_production.js
+               |- config.js //根据不同的环境，build.sh会生成不同的config
+               |- index.js  //默认配置项，把config.js merge到index.js内替换默认
+            |- views/
+               |- layout.html
+               |- index.html
+            |- public/
+               |- images/
+               |- styles/
+            |- controllers/
+               |- home.js
+               |- task.js
+            |- models/
+               |- db.js
+               |- task.js
+            |- proxy/         //数据相关的业务
+            |- lib/           //业务无关的模块和辅助工具类
+               |- utils.js
+            |- common/        //业务相关的模块，外部通过require('./common')引入  
+               |- db.js
+               |- cache.js
+               |- index.js
+            |- bin/
+            |- node_modules/  //不上传到git
+            |- routes.js
+            |- app.js
+            |- dispatch.js
+            |- package.json   //`dependences`的依赖必须使用等于
+            |- Makefile       //驱动模块安装、模块检查、单元测试
+            |- build.sh       //初始化项目
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## 目录结构   
+            <hr />   
+            * `require('./config')`与`require('./config.js')`
+             * `require('./config')`可以加载文件夹  
+            * 使用目录文件夹下的`index.js`文件  
+            * ...   
+          </section>
+          <section data-markdown>
+            ## 推荐配置方式  
+            <hr />               
+            <pre><code>
+            |- config/    //外部通过require('./config');来引入配置文件   
+               |- config_daily.js
+               |- config_pre.js
+               |- config_production.js
+               |- config.js //根据不同的环境，build.sh会生成不同的config
+               |- index.js  //默认配置项，把config.js merge到index.js内替换默认              
+            </code></pre>
+            外部引用config时：
+            <pre><code>
+              var config = require('./config');
+            </pre></code>
+          </section>
+          <section data-markdown>
+            ## 优点   
+            <hr />
+            * config/config.js不提交代码库  
+            * 根据环境不同可以非常简单的直接copy生成对应的配置文件   
+            * 每个开发人员可以单独维护一份自己的开发配置   
+            * 查找非常容易，不容易出错   
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            ## 项目依赖初始化   
+            <hr />
+            * 使用`Makefile` + `package.json`驱动  
+            * 使用新版`内部npm`   
+          </section>
+          <section data-markdown>
+            ## 使用`Makefile`驱动  
+            <hr />   
+            <pre><code>
+              NAME = nodeblog
+              TESTS = $(shell ls -S `find test -type f -name "*.test.js" -print`)
+              TIMEOUT = 5000
+              REPORTER = tap
+              JSCOVER = ./node_modules/jscover/bin/jscover
+              PROJECT_DIR = $(shell pwd)
+              NPM_INSTALL_PRODUCTION = PYTHON=`which python2.6` NODE_ENV=production \
+                npm --registry=http://registry.npm.taobao.net --production install
+              NPM_INSTALL_TEST = PYTHON=`which python2.6` NODE_ENV=test \
+                npm --registry=http://registry.npm.taobao.net install 
+
+              install:
+                #先检查新版npm上模块是否存在，是否需更新
+                $(MAKE) check
+                @$(NPM_INSTALL_PRODUCTION)
+
+              test:
+                @$(MAKE) install
+                @$(NPM_INSTALL_TEST)
+                @NODE_ENV=test node_modules/mocha/bin/mocha \
+                  --reporter $(REPORTER) --timeout $(TIMEOUT) $(TESTS)
+
+              check: 
+                @$curl -s http://npm.taobao.net/version/check.sh | sh 
+
+              cov:
+                @rm -rf ../$(NAME)-cov
+                @$(JSCOVER) --encoding=utf-8 --exclude=node_modules --exclude=test --exclude=public \
+                  --exclude=bin --exclude=client --exclude=benchmarks --exclude=conf \
+                  ./ ../$(NAME)-cov
+                @cp -rf ./node_modules ./bin ./test ./public ./conf ./dispatch.js ./hsf.js ../$(NAME)-cov
+
+              test-cov: cov
+                @$(MAKE) -C $(PROJECT_DIR)/../$(NAME)-cov test REPORTER=dot
+                @$(MAKE) -C $(PROJECT_DIR)/../$(NAME)-cov test REPORTER=html-cov > $(PROJECT_DIR)/coverage.html
+
+              .PHONY: install test test-cov cov check
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## 优点
+            <hr />   
+            * 对比`jake`, 不需要预先安装，对比`shell`, 更加简单  
+            * 一个命令搞定所有依赖 + 运行测试   
+            * 模版预设环境变量与仓库，基本无编译问题  
+             * PYTHON=`which python2.6`  
+             * NODE_ENV  
+          </section>
+          <section data-markdown>
+            ## Pakcage.json  
+            <hr >
+             * dependencies: 必须指定版本号   
+            <pre><code>
+            "dependencies": {
+              "urllib": "=0.2.8",
+              "optimist": "*",  //错误
+              "printable": "*",
+              "forwards": ">=0.0.3",
+              "cutter": ">=0.0.2"
+            }
+            </code></pre>
+            * 通过`make check`检查package.json中依赖是否有效   
+            * `make install`安装`dependencies`中的依赖   
+            * `make test`的时候会安装`devDependencies`中依赖  
+          </section>
+        </section>
+        <section data-markdown>
+          ## 测试框架  
+          <hr >
+           * http测试 => `supertest`  
+           * 多个异步任务返回 => `pedding`  
+           * 私有成员 => `rewire`  
+           * 断网容灾测试 => `interceptor`
+           * ...
+        </section>
+        <section>
+          <section data-markdown>
+            ## 内部模块  
+            <hr />
+             * 新版内部npm   
+             * 内部模块介绍   
+          </section>
+          <section data-markdown>
+            ## 新版内部[npm](http://npm.taobao.org)  
+            <hr />
+             * 审核机制  
+              * 依赖三方包需要在npm-web上提申请  
+              * 二方包发布需要走npm-web  
+             * 模块检查：`make check`
+              * 检查模块是否在内部npm中存在  
+              * 检查package.json中`dependences`是否正确  
+              * 检查`dependences`是否需要更新  
+             * tnpm  
+              * `npm install -g tnpm` 安装
+              * tnpm install 从内部npm安装  
+              * tnpm check 进行模块检查  
+          </section>
+          <section data-markdown>
+            ## EDP Lib介绍  
+            <hr />
+            ## ...
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel../reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+            keyboard: true,
+            rollingLinks: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
