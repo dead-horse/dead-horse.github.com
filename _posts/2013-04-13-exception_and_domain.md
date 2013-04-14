@@ -1,7 +1,7 @@
 ---
 layout : post
 category : nodejs 
-title : node中异步异常的处理与domain  
+title : Node.js 异步异常的处理与domain模块解析  
 summary : 由浅入深的介绍了node是如何对异步异常进行处理，以及domain的原理和局限性。   
 keywords : nodejs,exception,domain
 author : dead_horse
