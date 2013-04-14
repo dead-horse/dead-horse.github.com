@@ -181,7 +181,7 @@ domain自身其实是一个`EventEmitter`对象，它通过事件的方式来传
     };
     ```
     
-  这个是其在多个事件循环中传递domain的关键：`nextTick`入队的时候，记录下当前的domain，当这个被加入队列中的事件循环被`_tickCallback`启动执行的时候，将新的事件循环的`process.domain`置为之前记录的`domain`。这样，在被`domain`所包裹的代码中，不管如何调用`process.nextTick`, domain将会一直被传递下去。
+  这个是其在多个事件循环中传递domain的关键：`nextTick`入队的时候，记录下当前的domain，当这个被加入队列中的事件循环被`_tickCallback`启动执行的时候，将新的事件循环的`process.domain`置为之前记录的`domain`。这样，在被`domain`所包裹的代码中，不管如何调用`process.nextTick`, domain将会一直被传递下去。   
   3. 当然，node的异步还有两种情况，一种是`event`形式。因此在`EventEmitter`的[构造函数](https://github.com/joyent/node/blob/master/lib/events.js#L28)有如下代码：  
    
   ```js
