@@ -17,7 +17,6 @@ body {
 	margin: 0 auto;
 	width: 960px;
 	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
-	background: darkGray;
 	}
 	
 /* standard alignments */
@@ -308,4 +307,12 @@ footer p{
 }
 #blogs li {
   margin 4px;
+}
+
+#fork {
+	width: 243px;
+	height: 201px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
 }
