@@ -254,7 +254,7 @@ aside {
 aside section {
 	margin: 10px 0 0 10px;
 	padding: 10px 15px;
-	background-color: #f2f2f2;
+	/*background-color: #f2f2f2;*/
 	
 /* curved border radius */
 	-moz-border-radius: 20px;
@@ -311,7 +311,7 @@ footer p{
 
 #fork {
 	width: 282px;
-	height: 233px;
+	height: 230px;
 	position: absolute;
 	right: 0px;
 	top: 0px;
