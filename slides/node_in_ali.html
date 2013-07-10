@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Node.js In Alibaba</title>
+
+    <meta name="description" content="node.js, alibaba">
+    <meta name="author" content="dead_horse">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="../reveal.js/css/custom.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section style="text-align: center;">
+          <div style="position:absolute; top:35%; left:0; right:0;">
+            <h2>Node.js In Alibaba</h2>
+            <br />
+            <br />
+            <h3 style="position: absolute; right:150px">不四</h3>
+          </div>
+        </section>
+        <section data-markdown>
+          ## 分享些什么  
+          
+          ----
+
+          * 阿里的 node 环境
+          * node 的模块化
+          * web开发与运维
+        </section>
+        <section>
+          <section data-markdown>
+            ## 阿里的 node 环境  
+
+            ----
+
+            * web框架与中间件    
+            * 数据库与缓存     
+            * 公司内部服务  
+          </section>
+          <section data-markdown>
+            ## web框架与中间件
+
+            ----
+
+            * 基于[connect](https://github.com/senchalabs/connect)
+              * 最富盛名的 web 框架 [express](http://expressjs.com) 的核心  
+              * 灵活的中间件机制，非常容易定制  
+
+            ```js
+            var connect = require('connect');
+            var http = require('http');
+
+            var app = connect()
+              .use(connect.favicon())
+              .use(connect.static('public'))
+              .use(connect.cookieParser())
+              .use(connect.session({ secret: 'my secret here' }))
+              .use(function(req, res){
+                res.end('Hello from Connect!\n');
+              });
+
+            http.createServer(app).listen(3000);
+            ```
+
+          </section>
+          <section data-markdown>
+            ## web框架与中间件
+
+            ----
+
+            * 丰富的二方和三方的中间件  
+              * [connect-render](https://github.com/fengmk2/connect-render): ejs 的 render 中间件  
+              * [urlrouter](https://github.com/fengmk2/urlrouter): 类 express 的路由中间件  
+              * [response-patch](https://github.com/fengmk2/response-patch): `res.send()`，`res.json()`等辅助方法patch  
+          </section>          
+          <section data-markdown>
+            ## web框架与中间件  
+
+            ----
+
+            * 自己实现中间件  
+            
+            <pre><code contenteditable>
+//in connect-rt.js
+var microtime = require('microtime');
+
+/**
+ * Reponse time:
+ *
+ * Adds the `X-Response-Time` header displaying the response
+ * duration in microsecond (μs).
+ *
+ * @see https://github.com/senchalabs/connect/blob/master/lib/middleware/responseTime.js
+ * @return {Function(req, res, next)}
+ * @api public
+ */
+
+module.exports = function responseTime(options) {
+  options = options || {};
+  var headerName = options.headerName || 'X-Response-Time';
+  return function (req, res, next) {
+    var start = microtime.now();
+
+    if (res._responseTime) {
+      return next();
+    }
+    res._responseTime = true;
+
+    res.on('header', function () {
+      var duration = microtime.now() - start;
+      res.setHeader(headerName, duration);
+    });
+
+    next();
+  };
+};
+
+//in app.js
+var app = connect();
+app.use(connect.rt({headerName: 'Response-Time'}));
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## 数据库与缓存 > mySQL
+
+            ----
+
+            [easymysql](https://github.com/aleafs/easymysql):  基于 [node-mysql](https://github.com/felixge/node-mysql) 开发而来，提供一个简单、高可用的mysql连接基础库。  
+
+              * 支持query超时控制；
+              * 可控制的连接池支持，SQL总是尽可能早地被`可用的`空闲连接抢到并执行；
+              * 支持master-slave模式，运行期间自动感知主从切换；
+              * 即将支持事务。 
+          </section>
+          <section data-markdown>
+            ## 数据库与缓存 > mongoDB
+
+            ----
+
+            [mongoskin](https://github.com/aleafs/easymysql):  [node-mongo-native](https://github.com/mongodb/node-mongodb-native) 的封装。 
+
+              * 提供类似 `node-mongodb-native` 的API操作  
+              * 封装了一些更为友好的API  
+              * 同时提供 `MVC helpers` 
+
+          </section>          
+          <section data-markdown>
+            ## 数据库与缓存 > redis
+
+            ----
+
+            [mredis](https://github.com/dead-horse/multi_redis): 基于 [node_redis](https://github.com/mranney/node_redis) 开发。  
+
+              * 支持连接多个redis服务，多写单读。   
+              * 对管理的redis服务连接进行健康检测。将不正常的redis服务断开。   
+              * 所有redis操作(`get`, `set`)都支持超时。    
+              * 保证只要有一个redis服务仍然存活，依赖于mredis的系统就能稳定运行，同时在其他暂时异常的redis服务恢复的时候重新连接。   
+
+          </section>
+          <section data-markdown>
+            ##数据库与缓存 > hbase
+
+            ----
+
+            [node-hbase-client](https://github.com/alibaba/node-hbase-client): @[苏千](https://github.com/fengmk2)开发的纯JS实现的高性能hbase客户端。  
+
+              * 支持hbase 0.94.0  
+              * 支持`get`, `put`, `delete`以及`mget`, `mput`, `mdelete`
+              * 高性能（比走hbase 的 http接口性能更高更稳定）
+
+          </section>
+          <section data-markdown>
+            ## 公司内部服务 > hsf 
+
+            ----
+
+            [hsf](http://npm.alibaba-inc.com/guide/detail?name=hsf): node 版hsf，实现了node发布服务和调用各种语言发布的hsf服务。  
+
+              * 消费者异步调用以及超时设置  
+              * 支持几乎所有形式的 java 对象  
+              * 服务地址缓存，长/短连接形式调用的支持等  
+              * 发布 hsf 服务  
+              * hsf 服务流量限制以及中间件支持， hsf accesslog支持
+              * hsf专用的单元测试辅助模块: [hsftest](http://npm.alibaba-inc.com/guide/detail?name=hsftest)  
+              * hsf服务的压力测试工具：[hsfbm](http://npm.alibaba-inc.com/guide/detail?name=hsfbm)  
+          </section>
+          <section data-markdown>
+            ## 公司内部服务 > taobaosession
+
+            ----
+
+            [taobaosession](http://npm.alibaba-inc.com/guide/detail?name=taobaosession)： 淘宝 sessionproxy 的 node 客户端。
+
+             * 根据 cookie 中的 sessionId， 获取淘宝用户信息。  
+             * 通过 connect 中间件形式支持[淘宝子账号登录](http://baike.corp.taobao.com/index.php/%E5%AD%90%E8%B4%A6%E5%8F%B7%E7%99%BB%E5%BD%95%E6%8E%A5%E5%85%A5?spm=0.0.0.0.EAN3aC)  
+
+          </section>
+          <section data-markdown>
+            ## 公司内部服务 > tfs  
+
+            ---- 
+            [tfs](https://github.com/fengmk2/tfs): [Taobao FileSystem](http://code.taobao.org/p/tfs/src/)的 node 客户端。
+             
+             * 自定义文件名上传和 tfs 随机分配文件名上传。  
+             * 上传本地文件、内存中的文件以及 `Stream` 形式文件。  
+             * 删除 tfs 上的文件。  
+
+          </section>
+          <section data-markdown>
+            ## 公司内部服务 > tair
+
+            ----
+            [node-tair](https://github.com/sunfang1cn/node-tair): 纯javascript实现的淘宝 [tair](http://code.taobao.org/p/tair/src/) 客户端。  
+
+            * 支持 get / set / remove
+            * 支持 mget / incr  
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            ## node 的模块化  
+
+            ----
+
+            * Ali npm  
+            * package.json 和 Makefile 驱动开发  
+            * 各种实用模块  
+          </section>
+          <section data-markdown>
+            ## Ali npm  
+
+            ----
+
+            [Ali npm](http://npm.alibaba-inc.com)是一个内部的node模块管理中心。  
+
+             * 搭建了一个内部的npm源，保证了模块下载速度与内部开发的模块的安全性。 
+             * 建立了模块审核与模块维护的机制。  
+             * 提供了模块的[文档查询](http://npm.alibaba-inc.com/guide)以及一个在线的[wiki](http://npm.alibaba-inc.com/wiki)系统。  
+             * 提供了一个强大的命令行工具 tnpm 来辅助开发  
+
+            [详细介绍](http://www.atatech.org/article/detail/8340/0)  
+          </section>
+          <section data-markdown>
+            ## package.json 文件  
+
+            ----
+
+            <pre><code contenteditable>
+{
+  "name": "project-name",
+  "version": "0.2.9",
+  "description": "project description",
+  "keywords": ["key"],
+  "author": "busi.hyy <busi.hyy@taobao.com>",
+  "repository": { 
+    "type": "git", 
+    "url": "giturl.com:project.git" 
+  },
+  "dependencies": {
+    "connect": "2.8.0",
+    "connect-rt": "0.0.2",
+    "connect-mredis": "1.0.9",
+    "connect-render": "0.3.1",
+    "urlrouter": "0.4.0",
+    "restful-router": "0.1.1",
+    "response-patch": "0.1.1",
+    "debug": "0.7.2",
+    "hsf": "0.7.26",
+    "taobaosession": "0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "blanket": "1.1.4"
+  },
+  "scripts": {
+    "test": "make test-all",
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  }
+}
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## Makefile 文件
+
+            ----
+
+            <pre><code contenteditable>
+            TESTS = $(shell ls -S `find test -type f -name "*.test.js" -print`)
+            TIMEOUT = 5000
+            MOCHA_OPTS =
+            REPORTER = tap
+            NPM_REGISTRY = --registry=http://registry.npm.taobao.net
+            NPM_INSTALL_PRODUCTION = PYTHON=`which python2.6` NODE_ENV=production npm install $(NPM_REGISTRY)
+            NPM_INSTALL_TEST = PYTHON=`which python2.6` NODE_ENV=test npm install $(NPM_REGISTRY)
+
+            check: # 通过 ali npm 提供的依赖检查接口，进行项目的依赖模块检查  
+              @curl -s http://npm.alibaba-inc.com/version/check.sh | sh
+
+            install: # 安装依赖模块
+              @$(NPM_INSTALL_PRODUCTION)
+
+            install-test: check # 安装测试需要的依赖模块
+              @$(NPM_INSTALL_TEST)
+
+            test: install-test # 单元测试
+              @NODE_ENV=test ./node_modules/mocha/bin/mocha \
+                --reporter $(REPORTER) --timeout $(TIMEOUT) $(MOCHA_OPTS) $(TESTS)
+
+            test-cov: # 通过blanket模块进行覆盖率测试 
+              @rm -f coverage.html
+              @$(MAKE) test MOCHA_OPTS='--require blanket' REPORTER=html-cov > coverage.html
+              @$(MAKE) test MOCHA_OPTS='--require blanket' REPORTER=travis-cov
+              @ls -lh coverage.html
+
+            test-all: test test-cov
+
+            .PHONY: install install-test test test-cov check test-all             
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## 小而美的 node 模块 (一)
+
+            ---- 
+            * [taobao-buc](http://npm.taobao.org/guide/detail?name=node-buc)：接入淘宝内网证书登录。 
+            * [eventproxy](https://github.com/JacksonTian/eventproxy)：基于事件的流程控制模块。 
+            * [moment](http://momentjs.com)：一个强大且非常轻量的时间处理模块，包含解析、验证、计算、格式化等各种功能。   
+            * [loader](https://github.com/TBEDP/loader)：Node静态资源加载器。该模块通过两个步骤配合完成，代码部分根据环境生成标签。上线时，需要调用minify方法进行静态资源的合并和压缩。
+            * [bagpipe](https://github.com/JacksonTian/bagpipe)：提供一个异步任务的队列，来限制异步任务并发数。  
+            
+          </section>
+          <section data-markdown>
+            ## 小而美的 node 模块 (二) 
+
+            ----
+            * [nodemailer](https://github.com/andris9/Nodemailer)：通过其他(google/alibaba-inc)的SMTP服务器进行邮件发送。   
+            * [iconv-lite](https://github.com/ashtuchkin/iconv-lite)：iconv的纯js版本，用于编码转换，速度比iconv快，且无需编译。强烈推荐替换iconv。
+            * [urllib](https://github.com/TBEDP/urllib)：封装了node原生的HTTP请求方法，提供更加友好的API和超时控制。 
+            * [ndir](https://github.com/fengmk2/ndir)：提供了node原生的fs模块缺失的一些文件操作：递归创建文件夹、按行读入、遍历文件夹等。  
+          </section>
+          <section data-markdown>
+            ## 小而美的 node 模块 (三)
+
+            ----  
+            * [logfilestream](https://github.com/fengmk2/logstream)：按各种格式(天、小时)将日志写入到不同的文件。  
+            * [webcamera](https://github.com/dead-horse/web-camera)：网页截图工具。通过phantomjs来打开渲染网页，对网页进行截图。
+            * [interceptor](https://github.com/dead-horse/interceptor)：模拟应用依赖模块所在机房单向断网的情况。  
+
+            [更多...](http://npm.alibaba-inc.com/wiki#./模块介绍.md)
+          </section>
+        </section>
+        <section>
+          <section data-markdown>
+            ## web开发与运维  
+
+            ----
+            * 目录结构与编码规范  
+            * 打包与发布  
+            * 日志监控
+
+          </section>
+          <section data-markdown>
+            ## 目录结构  
+            
+            ----
+            <pre><code contenteditable>
+            |- config/    //外部通过require('./config');来引入配置文件   
+               |- config_daily.js
+               |- config_pre.js
+               |- config_production.js
+               |- config.js //根据不同的环境，build.sh会生成不同的config
+               |- index.js  //默认配置项，把config.js merge到index.js内替换默认
+            |- views/       //页面模版文件
+               |- layout.html
+               |- index.html
+            |- assets/      //静态资源文件      
+               |- images/
+               |- css/
+               |- js/
+            |- controllers/ //控制器
+               |- home.js
+               |- task.js
+            |- proxy/         //数据相关的业务代码（读写数据库等方法的封装）
+            |- lib/           //业务无关的模块和辅助工具类（可以提取出来当成独立模块与其他项目共享）
+               |- utils.js
+            |- common/        //业务相关的模块，外部通过require('./common')引入  
+               |- db.js      
+               |- cache.js
+               |- index.js
+            |- node_modules/  //依赖模块，不上传到git
+            |- routes.js      //路由配置，可以在这里找到每一个url对应的控制器  
+            |- app.js         //web的入口文件
+            |- worker.js      //真正服务的子进程，会载入app.js
+            |- dispatch.js    //项目的入口文件，可以开启多进程模式启动多个worker
+            |- package.json   //项目描述文件
+            |- Makefile       //驱动模块安装、模块检查、单元测试
+            |- build.sh       //初始化项目
+            </code></pre>
+          </section>
+          <section data-markdown>
+            ## 推荐配置方式  
+            
+            ----             
+            <pre><code>
+            |- config/    //外部通过require('./config');来引入配置文件   
+               |- config_daily.js
+               |- config_pre.js
+               |- config_production.js
+               |- config.js //根据不同的环境，build.sh会生成不同的config
+               |- index.js  //默认配置项，把config.js merge到index.js内替换默认              
+            </code></pre>
+            外部引用config时：
+            <pre><code>
+              var config = require('./config');
+            </pre></code>
+          </section>
+
+          <section data-markdown>
+            ## 编码规范  
+
+            ----
+            * 两空格缩进  
+            * Camel 命名法  
+            * Node 的异步回调函数的第一个参数必须是错误指示 `fn(err, data);` 
+
+            详细的[编码规范](http://npm.alibaba-inc.com/wiki#经验分享/Node.js 编码规范.md)
+          </section>
+          <section data-markdown>
+            ## 版本控制  
+
+            ----  
+            * 通过 git 和 [gitlab](http://gitlab.alibaba-inc.com) 进行版本控制  
+            * 所有的开发和 bug fix 都通过新建分支完成  
+            * 开发完成之后 `rebase master`，然后在 gitlab 发起 `merge request` 进行 `code review`  
+            * 保护 `master` 分支，永远处于能够立即发布上线的状态  
+          </section>
+          <section data-markdown>
+            ## 打包与上线  
+
+            ----
+            * 通过`build.sh`脚本进行打包：  
+              - 设置环境变量（node, python, lang, version等）
+              - 安装所有的依赖
+              - 根据不同环境复制不同的配置文件  
+            * 通过 SCM平台进行打包和发布  
+              - 在打包机通过 `build.sh` 脚本打包  
+              - 将打好的源码包到指定机器的指定路径解压  
+            * 正式环境前端架设 `tenginx` 
+              - tenginx 监听80端口，转发给node 服务监听的端口  
+              - tenginx 可以记录 http 的 accesslog 以及设置其他的http头  
+          </section>
+          <section data-markdown>
+            ## 线上日志监控  
+
+            ----
+            * 通过[哈勃](http://monitor.taobao.com/monitorportal/main/welcome.htm)或者[阿里监控平台](http://m.alibaba-inc.com/)进行应用监控  
+            * http 服务通过 tenginx 记录 accesslog，监控平台可以进行日志的分析  
+            * hsf 服务通过 accesslog 中间件记录 accesslog，供监控平台分析  
+            * 把所有出现的 `error` 都记录到 error.log 日志，监控平台分析error日志报警  
+          </section>
+        </section>
+        <section>
+          <div style="position:absolute; top:35%; left:0; right:0;">
+            <h2 style="text-align: center;">Q & A</h2>
+            <br />
+            <br />
+            <h3 style="position: absolute; right:150px">thanks</h3>
+          </div>          
+        </section>
+      </div>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel../reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+            keyboard: true,
+            rollingLinks: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'cube', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
