@@ -76,7 +76,7 @@
 
             var app = connect()
               .use(connect.favicon())
-              .use(connect.static('public'))
+              .use('/public', connect.static('public'))
               .use(connect.cookieParser())
               .use(connect.session({ secret: 'my secret here' }))
               .use(function(req, res){
