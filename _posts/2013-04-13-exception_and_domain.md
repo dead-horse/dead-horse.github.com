@@ -141,7 +141,7 @@ d.run(error); //异常被抛出
 在看Domain的原理之前，我们先要了解一下`nextTick`和`_tickCallback`的[两个方法](https://github.com/joyent/node/blob/v0.10.4/src/node.js#L395)。  
 
 ```js
-function laterCall() {
+function laterCallback() {
   console.log('print me later');
 }
 
