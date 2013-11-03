@@ -32,4 +32,4 @@ layout: default
 
 ## iOS
 [github IOS 备忘](http://github.ibireme.com/github/list/ios/)  
-[IOS 5 视频教程](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)  
+[IOS 7 视频教程](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)  
