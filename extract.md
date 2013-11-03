@@ -31,4 +31,5 @@ layout: default
 [redis 设计与实现](http://www.redisbook.com/en/latest/index.html)  
 
 ## iOS
-[github IOS 备忘](http://github.ibireme.com/github/list/ios/)
+[github IOS 备忘](http://github.ibireme.com/github/list/ios/)  
+[IOS 5 视频教程](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)  
