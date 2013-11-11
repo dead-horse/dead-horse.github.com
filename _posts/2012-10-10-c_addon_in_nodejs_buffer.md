@@ -13,6 +13,7 @@ author : dead_horse
 [Node.js C++ addon编写实战（三）之Buffer](/nodejs/2012/10/10/c_addon_in_nodejs_buffer.html)   
 
 补上第四篇：[Node.js C++ addon编写实战(四)之兼容v0.11+与nan模块](/nodejs/2013/11/10/c_addon_in_nodejs_11.html)  
+
 上一篇文章介绍到了javascript到v8的数据映射关系和转换方法，然而Node.js除了javascript的数据类型之外，还自己实现了一个数据类型：Buffer。关于Node.js中的Buffer，可以先看一下[这篇文章](http://cnodejs.org/topic/4f16442ccae1f4aa27001067)，详细解析了node中buffer内存策略。   
 
 因为Buffer是独立于v8之外的，且没有相关的C++部分代码的文档，不过相关的接口还是可以通过阅读[源代码](https://github.com/joyent/node/blob/master/src/node_buffer.h)来了解。   

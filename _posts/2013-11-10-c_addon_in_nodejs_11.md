@@ -1,7 +1,7 @@
 ---
 layout : post
 category : nodejs 
-title : Node.js C++ addon编写实战（一）之兼容v0.11+与nan模块
+title : Node.js C++ addon编写实战（四）之兼容v0.11+与nan模块
 summary : 记录开发Node.js C++ addon过程中遇到的一些问题，经验总结，此篇为node-gyp的介绍。   
 keywords : nodejs,C++ addon,node-hsf
 author : dead_horse
