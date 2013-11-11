@@ -12,6 +12,8 @@ author : dead_horse
 [Node.js C++ addon编写实战（二）之对象转换 ](/nodejs/2012/10/09/c_addon_in_nodejs_object.html)   
 [Node.js C++ addon编写实战（三）之Buffer](/nodejs/2012/10/10/c_addon_in_nodejs_buffer.html)   
 
+补上第四篇：[Node.js C++ addon编写实战(四)之兼容v0.11+与nan模块](/nodejs/2013/11/10/c_addon_in_nodejs_11.html)  
+
 ### 从node-waf到node-gyp   
 node进入0.8版本之后，开始替换之前编译C++模块的编译工具，从node-waf向[node-gyp](https://github.com/TooTallNate/node-gyp)转换，暂时是两者都支持，之后会不在支持node-waf编译。因此要写node的C++扩展，首先需要了解如何编写node-gyp的配置文件。  
 node-gyp的配置文件名字为*binding.gyp*,它是一个纯JSON对象，相对于node-waf的配置文件来说，写惯了javascript的同学会更加熟悉。   

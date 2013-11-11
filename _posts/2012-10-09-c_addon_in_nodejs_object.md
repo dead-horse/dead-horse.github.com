@@ -12,6 +12,8 @@ author : dead_horse
 [Node.js C++ addon编写实战（二）之对象转换 ](/nodejs/2012/10/09/c_addon_in_nodejs_object.html)   
 [Node.js C++ addon编写实战（三）之Buffer](/nodejs/2012/10/10/c_addon_in_nodejs_buffer.html)   
 
+补上第四篇：[Node.js C++ addon编写实战(四)之兼容v0.11+与nan模块](/nodejs/2013/11/10/c_addon_in_nodejs_11.html)  
+
 正式进入编写Node.js C++模块中编码部分的介绍了。在此之前先罗列一些这方面的资料供参考入门。   
 
  * v8数据结构的手册： [V8 Data Structures](http://izs.me/v8-docs/annotated.html)   
