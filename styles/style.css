@@ -45,16 +45,19 @@ img.alignright {
 h1 {
 	font-size: 28px;
 	padding: 20px 0;
+	line-height: 40px;
 	}
 
 h2 {
 	font-size: 24px;
 	padding: 20px 0;
+	line-height: 36px;
 	}
 
 h3 {
 	font-size: 18px;
 	padding: 10px 0;
+	line-height: 30px;
 	}
 
 p {
