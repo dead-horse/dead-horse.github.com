@@ -33,3 +33,6 @@ layout: default
 ## iOS
 [github IOS 备忘](http://github.ibireme.com/github/list/ios/)  
 [IOS 7 视频教程](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)  
+
+## linux  
+[Linux系统信息查看命令大全](http://tech.idv2.com/2008/01/11/linux-sysinfo-cmds/)  
