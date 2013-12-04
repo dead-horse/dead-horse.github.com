@@ -96,7 +96,7 @@ NAN_METHOD(Add) {
 
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     ThrowException(Exception::TypeError(String::New("Wrong arguments")));
-    return scope.Close(Undefined());
+    NanReturnUndefined();
   }
 
   Local<Number> num = Number::New(args[0]->NumberValue() +
