@@ -91,7 +91,7 @@ NAN_METHOD(Add) {
 
   if (args.Length() < 2) {
     ThrowException(Exception::TypeError(String::New("Wrong number of arguments")));
-    return scope.Close(Undefined());
+    NanReturnUndefined();
   }
 
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
