@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>cnpmjs, 国产npm的逆袭</title>
+
+    <meta name="description" content="An introduction for cnpmjs.org.">
+    <meta name="author" content="dead_horse">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="../styles/reveal_theme.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../styles/github.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+            <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hpHUxAPRN.png"></a>
+            <h3>国产 NPM 的逆袭</h3>
+        </section>
+        <section>
+          <p><img src=" https://i.alipayobjects.com/e/201312/1hqKEPJPlt.jpeg" class="mug"></p>
+          <small><a href="http://github.com/dead-horse" target="_blank">dead-horse@github</a></small><br />
+          <small><a href="http://weibo.com/deadhorse" target="_blank">2B码农死小马@weibo</a></small><br />
+          <small>Work@<a href="https://github.com/TBEDP" target="_blank">阿里巴巴数据产品部</a> | Focus on web and <a href="http://nodejs.org" target="_blank">Node.js</a></small><br />
+        </section>
+        <section data-background="#c66">
+          <a href="https://scalenpm.org/" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hqF6h3AVZ.png"></a>
+        </section>
+        <section data-background="#c66">
+          <h2 class="weiss">270,000 $ ? WTF !</h2>
+        </section>
+        <section data-background="#c66">
+          <a href="http://blog.nodejs.org/2013/11/26/npm-post-mortem/" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hqdO6gF6D.png"></a>
+        </section>
+        <section data-background="#c66">
+          <h5 class="weiss">npm 要如何优化？</h5>
+          <ol>
+            <li class="fragment weiss" data-fragment-index="0">Always be in multi-master</li>
+            <li class="fragment weiss" data-fragment-index="1">Decouple www.npmjs.org and registry.npmjs.org</li>
+            <li class="fragment weiss" data-fragment-index="2">Always have a spare replica</li>
+            <li class="fragment weiss" data-fragment-index="3">Move attachments out of CouchDB</li>
+          </lo>
+        </section>
+        <section data-background="">
+          <h3>有没有更容易的办法来做这件事情？</h3>
+        </section>
+        <section data-background="" data-transition="fade">
+          <p><img src="https://i.alipayobjects.com/e/201312/1hrFVHX2Pl.png" height="80"></p>
+          <p><img height="80"></p>
+        </section>
+        <section data-background="" data-transition="none">
+          <p><img src="https://i.alipayobjects.com/e/201312/1hrFVHX2Pl.png" height="80" style="opacity:0.2;"></p>
+          <P><img src="http://dev.mysql.com/common/logos/logo-mysql-110x57.png" height="80" style="margin-right:20px;">  <img src="https://i.alipayobjects.com/e/201312/1hrNU9a1iP.png" height="80" style="margin-left:20px;"></P>
+        </section>
+        <section>
+          <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hrx553IEX.png"></a>
+        </section>
+        <section data-background="#a3e2c3">
+          <h3>完全同步的 npm 镜像</h3>
+        </section>
+        <section>
+          <img src="https://docs.google.com/drawings/d/12QeQfGalqjsB77mRnf5Iq5oSXHCIUTvZTwECMonqCmw/pub?w=960&h=720">
+        </section>
+        <section data-markdown>
+          #### 如何使用
+
+          ```
+          # 安装 cnpm
+          $ npm install -g cnpm
+          # 或者 alias npm
+          $ alias cnpm="npm --registry=http://registry.cnpmjs.org"
+          
+          # 开始从cnpm 安装依赖
+          $ cnpm install connect
+          
+          # 如果发现cnpm没有同步到最新版本，可以手动触发同步
+          $ cnpm sync connect
+
+          # 不允许直接发布到cnpm
+          $ npm publish name
+          $ cnpm sync name
+          ```
+        </section>
+        <section data-background="#a3e2c3">
+          <h3>不只是一个 npm 的镜像</h3>
+        </section>
+        <section>
+          <div style="position:absolute; top:35%; left:0; right:0;">
+            <h2 style="text-align: center;">Q & A</h2>
+            <br />
+            <br />
+            <h3 style="position: absolute; right:150px">thanks</h3>
+          </div>          
+        </section>
+      </div>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel../reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        keyboard: true,
+        rollingLinks: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
