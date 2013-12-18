@@ -150,7 +150,7 @@ body {
   color: #999;
 }
 .reveal pre code {
-  max-height: 600px !important;
+  max-height: 720px !important;
 }
 
 .shadow {
@@ -158,6 +158,10 @@ body {
 }
 .weiss {
   color: #fff !important;
+}
+
+.orange {
+  color: #ff3401 !important;
 }
 
 .reveal section p img {
@@ -178,4 +182,8 @@ ul.check li:before {
 ul.check li.checked:before {
   color: #8bc74a;
   content: "\02611 \020";
+}
+
+.reveal li {
+  margin: 20px 0;
 }
