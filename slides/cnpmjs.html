@@ -39,9 +39,9 @@
         </section>
         <section>
           <p><a href="http://deadhorse.me" target="_blank"><img src=" https://i.alipayobjects.com/e/201312/1hqKEPJPlt.jpeg" class="mug"></a></p>
-          <small><a href="http://github.com/dead-horse" target="_blank">dead-horse@github</a></small><br />
-          <small><a href="http://weibo.com/deadhorse" target="_blank">2B码农死小马@weibo</a></small><br />
-          <small>Work@<a href="https://github.com/TBEDP" target="_blank">阿里巴巴数据产品部</a> | Focus on web and <a href="http://nodejs.org" target="_blank">Node.js</a></small><br />
+          <small><a href="http://github.com/dead-horse" target="_blank">dead-horse @ github</a></small><br />
+          <small><a href="http://weibo.com/deadhorse" target="_blank">2B码农死小马 @ weibo</a></small><br />
+          <small>不四 @ <a href="https://github.com/TBEDP" target="_blank">阿里巴巴数据产品部</a> | Focus on Web and <a href="http://nodejs.org" target="_blank">Node.js</a></small><br />
         </section>
         <section data-background="#c66">
           <a href="https://scalenpm.org/" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hqF6h3AVZ.png"></a>
@@ -87,7 +87,7 @@
           <img src="https://i.alipayobjects.com/e/201312/1idmp3dnJd.png">
         </section>
         <section data-transition="none">
-          <h4>mysql + CDN 重新实现</h4>
+          <h4 class="normal-case">MySQL + CDN 重新实现</h4>
           <img src="https://i.alipayobjects.com/e/201312/1idszqfxsb.png">
         </section>
         <section data-transition="none">
@@ -98,7 +98,7 @@
           <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1iWgWF8yMP.png"></a>
         </section>
         <section data-background="#a3e2c3">
-          <h3>完全同步的 npm 镜像</h3>
+          <h3>完全同步的 NPM 镜像</h3>
         </section>
         <section data-transition="fade">
           <h4>NPM</h4>
@@ -107,6 +107,15 @@
         <section data-transition="none">
           <h4>CNPM</h4>
           <img src="https://i.alipayobjects.com/e/201312/1idwUmeipB.png">
+        </section>
+        <section>
+          <h3>同步方式</h3>
+          <ul>
+            <li class="fragment" data-fragment-id="0">每30分钟自动增量同步</li>
+            <li class="fragment" data-fragment-id="1">cnpm sync 主动同步</li>
+            <li class="fragment" data-fragment-id="2">cnpm install 安装不存在的模块或版本，自动同步</li>
+            <li class="fragment" data-fragment-id="3">通过 <a href="http://cnpmjs.org" target="_blank">web</a> 主动同步</li>
+          </ul>
         </section>
         <section id="cnpm-info">
           <h4>cnpm 现状</h4>
@@ -175,17 +184,26 @@
           <img src="https://i.alipayobjects.com/e/201312/1idwl2PTHB.png">
         </section>
         <section>
+          <h3>同步方式</h3>
+          <ul>
+            <li class="fragment" data-fragment-id="0">每30分钟自动更新库中模块版本</li>
+            <li class="fragment" data-fragment-id="1">cnpm sync 主动同步</li>
+            <li class="fragment" data-fragment-id="2">cnpm install 安装不存在的模块或版本，自动同步</li>
+            <li class="fragment" data-fragment-id="3">通过 <a href="http://cnpmjs.org" target="_blank">web</a> 主动同步</li>
+          </ul>
+        </section>        
+        <section>
           <h3>3分钟完成部署</h3>
         </section>
         <section data-markdown>
           ### 依赖
-          * Node >= v0.10.21
+          * Node
           * Mysql  
           * Redis  
           * qiniu CDN (或者其他私有CDN)  
         </section>
         <section>
-          <h3 class="normal-case">Goodbye, couchDB !</h3>
+          <h2 class="normal-case">Goodbye, CouchDB !</h2>
         </section>        
         <section data-markdown>
           ### 获取代码
@@ -271,7 +289,10 @@
            --cache=$HOME/.npm/.cache/lnpm\
            --userconfig=$HOME/.lnpmrc'" >> $HOME/.zshrc && source $HOME/.zshrc
           ```
-        </section>        
+        </section>
+        <section>
+          <h2 class="normal-case">Do It Now!</h2>
+        </section>
         <section>
           <div style="position:absolute; top:35%; left:0; right:0;">
             <h2 style="text-align: center;">Q & A</h2>
