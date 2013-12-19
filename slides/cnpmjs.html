@@ -82,19 +82,31 @@
           <p><img src="https://i.alipayobjects.com/e/201312/1hrFVHX2Pl.png" height="80" style="opacity:0.2;"></p>
           <P><img src="http://dev.mysql.com/common/logos/logo-mysql-110x57.png" height="80" style="margin-right:20px;">  <img src="https://i.alipayobjects.com/e/201312/1hrNU9a1iP.png" height="80" style="margin-left:20px;"></P>
         </section>
+        <section data-transition="fade">
+          <h4>保持 npm 的所有接口</h4>
+          <img src="https://i.alipayobjects.com/e/201312/1idmp3dnJd.png">
+        </section>
+        <section data-transition="none">
+          <h4>mysql + CDN 重新实现</h4>
+          <img src="https://i.alipayobjects.com/e/201312/1idszqfxsb.png">
+        </section>
+        <section data-transition="none">
+          <h4>可扩展</h4>
+          <img src="https://i.alipayobjects.com/e/201312/1idssRVRUb.png">
+        </section>
         <section>
-          <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hrx553IEX.png"></a>
+          <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1iWgWF8yMP.png"></a>
         </section>
         <section data-background="#a3e2c3">
           <h3>完全同步的 npm 镜像</h3>
         </section>
         <section data-transition="fade">
           <h4>NPM</h4>
-          <img src="https://i.alipayobjects.com/e/201312/1iEJxZpeg1.png">
+          <img src="https://i.alipayobjects.com/e/201312/1idq6IK8Y9.png">
         </section>
         <section data-transition="none">
           <h4>CNPM</h4>
-          <img src="https://i.alipayobjects.com/e/201312/1iEQM7pNPx.png">
+          <img src="https://i.alipayobjects.com/e/201312/1idwUmeipB.png">
         </section>
         <section id="cnpm-info">
           <h4>cnpm 现状</h4>
@@ -152,11 +164,15 @@
         </section>
         <section data-transition="fade">
           <h4>CNPM</h4>
-          <img src="https://i.alipayobjects.com/e/201312/1iEQSUrJPx.png">
+          <img src="https://i.alipayobjects.com/e/201312/1idwUmeipB.png">
+        </section>        
+        <section data-transition="none">
+          <h4 class="normal-case">CNPM with Admin</h4>
+          <img src="https://i.alipayobjects.com/e/201312/1idqMTBBuv.png">
         </section>
         <section data-transition="none">
-          <h4>CNPM</h4>
-          <img src="https://i.alipayobjects.com/e/201312/1iEKJCQXYT.png">
+          <h4 class="normal-case">CNPM with Admin</h4>
+          <img src="https://i.alipayobjects.com/e/201312/1idwl2PTHB.png">
         </section>
         <section>
           <h3>3分钟完成部署</h3>
@@ -168,6 +184,9 @@
           * Redis  
           * qiniu CDN (或者其他私有CDN)  
         </section>
+        <section>
+          <h3 class="normal-case">Goodbye, couchDB !</h3>
+        </section>        
         <section data-markdown>
           ### 获取代码
           ```
@@ -184,46 +203,75 @@
           $ vim config/config.js
           ```
         </section>
-        <section data-markdown>
-          ### config file
+        <section>
+          <h3 class="normal-case">config file</h3>
 
-          ```
-            module.exports = {
-              debug: false,
-              enableCluster: true, // enable cluster mode
-              logdir: 'your application log dir',
-              mysqlServers: [
-                {
-                  host: 'your mysql host',
-                  port: 3306,
-                  user: 'yourname',
-                  password: 'your password'
-                }
-              ],
-              mysqlDatabase: 'cnpmjs',
-              redis: {
-                host: 'your redist host',
-                port: 6379,
-              },
-              qn: {
-                accessKey: "your qiniu appkey",
-                secretKey: "your secret key",
-                bucket: "foobucket",
-                domain: "http://foobucket.u.qiniudn.com"
-              },
-              enablePrivate: true, // enable private mode, only admin can publish, other use just can sync package from source npm
-              admins: {
-                admin: 'admin@cnpmjs.org',
-              },
-            };          
-          ```
+          <pre><code class="javascript">
+  module.exports = {
+    debug: false,
+    enableCluster: true, // enable cluster mode
+    mysqlServers: [
+      {
+        host: 'localhost',
+        port: 3306,
+        user: 'cnpmjs',
+        password: 'cnpmjs123',
+      }
+    ],
+    mysqlDatabase: 'cnpmjstest',
+    redis: {
+      host: 'localhost',
+      port: 6379,
+    },
+    nfs: null, //use your own CND here
+    enablePrivate: true, // enable private mode, only admin can publish, other use just can sync package from source npm
+    admins: {
+      admin: 'admin@cnpmjs.org',
+    },
+    syncModel: 'exist'
+  };  
+          </code></pre>
         </section>
         <section data-markdown>
-          ###安装依赖
+          #### 安装依赖
           ```
           make install
           ```
+          #### 启动 
+          ```
+          $ npm run start
+
+          Starting cnpmjs.org ...
+          Start nodejs success. PID=27175
+          ```
+          #### 查看服务
+          ```bash
+          #open registry and web
+          # registry
+          open http://localhost:7001
+          # web
+          open http://localhost:7002          
+          ```
         </section>
+        <section data-markdown>
+          #### 使用cnpm作为私有库的客户端
+          ```bash
+          # install cnpm first
+          npm install -g cnpm 
+
+          # then alias lnpm to cnpm, but change config to your own registry
+          alias lnpm='cnpm --registry=http://localhost:7001\
+           --registryweb=http://localhost:7002\
+           --cache=$HOME/.npm/.cache/lnpm\
+           --userconfig=$HOME/.lnpmrc'
+
+           #or put this in .zshrc or .bashrc
+           echo "#lnpm alias\nalias lnpm='cnpm --registry=http://localhost:7001\
+           --registryweb=http://localhost:7002\
+           --cache=$HOME/.npm/.cache/lnpm\
+           --userconfig=$HOME/.lnpmrc'" >> $HOME/.zshrc && source $HOME/.zshrc
+          ```
+        </section>        
         <section>
           <div style="position:absolute; top:35%; left:0; right:0;">
             <h2 style="text-align: center;">Q & A</h2>

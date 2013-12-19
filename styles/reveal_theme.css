@@ -187,3 +187,6 @@ ul.check li.checked:before {
 .reveal li {
   margin: 20px 0;
 }
+.reveal .normal-case {
+  text-transform: none;
+}
