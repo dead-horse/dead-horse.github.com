@@ -150,7 +150,9 @@ body {
   color: #999;
 }
 .reveal pre code {
-  max-height: 720px !important;
+  max-height: 650px !important;
+  font-size: 25px;
+  line-height: 25px;
 }
 
 .shadow {
