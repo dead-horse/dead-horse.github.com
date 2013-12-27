@@ -28,6 +28,25 @@
     var h = document.getElementsByTagName('head')[0]; h.appendChild(c);
     })();
     </script>
+    <style>
+    #switch {
+      color: #333;
+      text-decoration: none;
+      -webkit-transition: color .15s ease;
+      -moz-transition: color .15s ease;
+      -ms-transition: color .15s ease;
+      -o-transition: color .15s ease;
+      transition: color .15s ease;
+      position:absolute;
+      right: 100px;
+      top: 20px;
+      font-size: 25px;
+    }
+    a:hover#switch {
+      background: #000;
+      color: #eee;
+    }
+    </style>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -320,9 +339,10 @@ alias lnpm='cnpm --registry=http://localhost:7001\
         </section>
       </div>
     </div>
+    <a onclick="switchLang(this);" href="javascript:void(0);" id="switch" data-i18n="lang-widget">EN</a>
 <span style="display:none; visibility:hidden;" id="i18n">
-  <span lang="zh-cn" data-i18n="lang-widget">中文</span>
-  <span lang="en-us" data-i18n="lang-widget">EN</span>
+  <span lang="zh-cn" data-i18n="lang-widget">EN</span>
+  <span lang="en-us" data-i18n="lang-widget">中文</span>
 
   <span lang="zh-cn" data-i18n="optimize">npm 要如何优化？</span>
   <span lang="en-us" data-i18n="optimize">How to Optimize NPM?</span>
@@ -451,10 +471,18 @@ alias lnpm='cnpm --registry=http://localhost:7001\
         $('#last-sync-time').html(moment(data.last_sync_time).format('YYYY-MM-DD HH:mm:ss'));
         $('#sync-suceess').html(data.success_sync_num);
       });
-
+      var currLang = (navigator.language || navigator.userLanguage).toLowerCase();
       $(function () {
-        i18n(navigator.language || navigator.userLanguage);
+        i18n(currLang);
       });
+      function switchLang(e) {
+        var langStateTransitions = {
+          'en-us': 'zh-cn',
+          'zh-cn': 'en-us'
+        };
+        currLang = langStateTransitions[currLang]
+        i18n(currLang);
+      }
     </script>
   </body>
 </html>
