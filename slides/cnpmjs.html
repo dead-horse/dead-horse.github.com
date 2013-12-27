@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>cnpmjs, 国产npm的逆袭</title>
+    <title>cnpmjs</title>
 
     <meta name="description" content="An introduction for cnpmjs.org.">
     <meta name="author" content="dead_horse">
@@ -41,13 +41,12 @@
       <div class="slides">
         <section>
             <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hpHUxAPRN.png"></a>
-            <h3>国产 NPM 的逆袭</h3>
         </section>
         <section>
           <p><a href="http://deadhorse.me" target="_blank"><img src=" https://i.alipayobjects.com/e/201312/1hqKEPJPlt.jpeg" class="mug"></a></p>
           <small><a href="http://github.com/dead-horse" target="_blank">dead-horse @ github</a></small><br />
           <small><a href="http://weibo.com/deadhorse" target="_blank">2B码农死小马 @ weibo</a></small><br />
-          <small>不四 @ <a href="https://github.com/TBEDP" target="_blank">阿里巴巴数据产品部</a> | Focus on Web and <a href="http://nodejs.org" target="_blank">Node.js</a></small><br />
+          <small>不四 @ <a href="https://github.com/TBEDP" target="_blank">Alibaba - EDP</a> | Focus on Web and <a href="http://nodejs.org" target="_blank">Node.js</a></small><br />
         </section>
         <section data-background="#c66">
           <a href="https://scalenpm.org/" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1hqF6h3AVZ.png"></a>
@@ -56,7 +55,7 @@
           <h2 class="weiss">270,000 $ ? WTF !</h2>
         </section>
         <section data-background="#c66">
-          <h2 class="weiss">npm 要如何优化？</h2>
+          <h2 class="weiss" data-i18n="optimize">npm 要如何优化？</h2>
         </section>
         <section data-background="#c66" data-transition="fade">
           <a href="http://blog.nodejs.org/2013/11/26/npm-post-mortem/" target="_blank"><img src="https://i.cloudup.com/bapm3fk8Ve-3000x3000.png"></a>
@@ -77,14 +76,14 @@
         </section>        
         <section data-background="#c66">
           <ol>
-            <li class="weiss">不熟悉 CouchDB</li>
-            <li class="fragment weiss" data-fragment-index="0">新的 npm 架构 Isaacs 还没想好</li>
-            <li class="fragment weiss" data-fragment-index="1">模块的 tgz 包需要单独存储</li>
-            <li class="fragment weiss" data-fragment-index="2">我们没有 270,000 $</li>
+            <li class="weiss" data-i18n="problem-1">不熟悉 CouchDB</li>
+            <li class="fragment weiss" data-fragment-index="0" data-i18n="problem-2">新的 npm 架构还没完全想好</li>
+            <li class="fragment weiss" data-fragment-index="1" data-i18n="problem-3">模块的 tgz 包需要单独存储</li>
+            <li class="fragment weiss" data-fragment-index="2" data-i18n="problem-4">我们没有 270,000 $</li>
           </lo>
         </section>
         <section data-background="">
-          <h3>有没有更容易的方法来做这件事情？</h3>
+          <h3  data-i18n="easy-way">有没有更容易的方法来做这件事情？</h3>
         </section>
         <section data-background="" data-transition="fade">
           <p><img src="https://i.alipayobjects.com/e/201312/1hrFVHX2Pl.png" height="80"></p>
@@ -95,22 +94,22 @@
           <P><img src="http://dev.mysql.com/common/logos/logo-mysql-110x57.png" height="80" style="margin-right:20px;">  <img src="https://i.alipayobjects.com/e/201312/1hrNU9a1iP.png" height="80" style="margin-left:20px;"></P>
         </section>
         <section data-transition="fade">
-          <h4>保持 npm 的所有接口</h4>
+          <h4 data-i18n="keep">保持 npm 的所有接口</h4>
           <img src="https://i.alipayobjects.com/e/201312/1idmp3dnJd.png">
         </section>
         <section data-transition="none">
-          <h4 class="normal-case">MySQL + CDN 重新实现</h4>
+          <h4 class="normal-case">MySQL + CDN</h4>
           <img src="https://i.alipayobjects.com/e/201312/1idszqfxsb.png">
         </section>
         <section data-transition="none">
-          <h4>可扩展</h4>
+          <h4 data-i18n="scalable">可扩展</h4>
           <img src="https://i.alipayobjects.com/e/201312/1idssRVRUb.png">
         </section>
         <section>
           <a href="http://cnpmjs.org" target="_blank"><img src="https://i.alipayobjects.com/e/201312/1iWgWF8yMP.png"></a>
         </section>
         <section data-background="#a3e2c3">
-          <h3>高速、稳定的全量 NPM 镜像</h3>
+          <h3 data-i18n="mirror">高速、稳定的全量 NPM 镜像</h3>
         </section>
         <section data-transition="fade">
           <h4>NPM</h4>
@@ -121,74 +120,72 @@
           <img src="https://i.alipayobjects.com/e/201312/1igJakxiSb.png">
         </section>
         <section>
-          <h3>同步方式</h3>
+          <h3 data-i18n="sync">同步方式</h3>
           <ul>
-            <li class="fragment" data-fragment-id="0">每30分钟自动增量同步</li>
-            <li class="fragment" data-fragment-id="1">cnpm sync 主动同步</li>
-            <li class="fragment" data-fragment-id="2">cnpm install 安装不存在的模块或版本，自动同步</li>
-            <li class="fragment" data-fragment-id="3">通过 <a href="http://cnpmjs.org" target="_blank">web</a> 主动同步</li>
+            <li class="fragment" data-fragment-id="0" data-i18n="sync-1">每30分钟自动增量同步</li>
+            <li class="fragment" data-fragment-id="1" data-i18n="sync-2">cnpm sync 主动同步</li>
+            <li class="fragment" data-fragment-id="2" data-i18n="sync-3">cnpm install 安装不存在的模块或版本，自动同步</li>
+            <li class="fragment" data-fragment-id="3" data-i18n="sync-4">通过 cnpm 网站主动同步</li>
           </ul>
         </section>
         <section id="cnpm-info">
-          <h4>cnpm 现状</h4>
+          <h4  data-i18n="status">cnpm 现状</h4>
           <ul>
             <li><span class="orange" id="total-packages"></span> total packages</li>
             <li><span class="orange" id="total-versions"></span> total package versions</li>
             <li><span class="orange" id="download-week"></span> downloads in this week</li>
             <li><span class="orange" id="download-month"></span> downloads in this month</li>
             <li>Last sync time: <span class="orange" id="last-sync-time"></span></li>
-            <li><span class="orange" id="sync-suceess"></span> packages sync successed last time.</li>
+            <li><span class="orange" id="sync-suceess"></span> packages sync successed last time</li>
           </ul>
         </section>        
-        <section data-markdown>
-          ### 如何使用
+        <section>
+          <h3  data-i18n="usage">如何使用</h3>
 
-          ```
-          # 安装 cnpm
-          $ npm install -g cnpm
-          # 或者 alias npm
-          $ alias cnpm="npm --registry=http://registry.cnpmjs.org \
-          --cache=${HOME}/.npm/.cache/cnpm \
-          --userconfig=${HOME}/.cnpmrc"
+          <pre><code>
+# install cnpm
+$ npm install -g cnpm
+# or alias npm
+$ alias cnpm="npm --registry=http://registry.cnpmjs.org \
+--cache=${HOME}/.npm/.cache/cnpm \
+--userconfig=${HOME}/.cnpmrc"
 
-          # 开始从cnpm 安装依赖
-          $ cnpm install connect
-          
-          # 如果发现cnpm没有同步到最新版本，可以手动触发同步
-          $ cnpm sync connect
+$ cnpm install connect
 
-          # 不允许直接发布到cnpm
-          $ npm publish name
-          $ cnpm sync name
-          ```
+# sync by cnpm
+$ cnpm sync connect
+
+# can not publish to cnpm
+$ npm publish name
+$ cnpm sync name
+          </code></pre>
         </section>
         <section data-background="#c66">
-          <h3 class="weiss">请勿</h3>
+          <h3 class="weiss"  data-i18n="donot">请勿</h3>
           <pre><code>
-          # 修改 ~/.npmrc, 添加
+          # edit ~/.npmrc, add
           registry = http://registry.cnpmjs.org
-          # 或者使用 npm config
+          # use npm config
           $ npm config set registry http://registry.cnpmjs.org
           </code></pre>
         </section>
         <section>
-          <h3>回馈社区</h3>
+          <h3  data-i18n="feedback">回馈社区</h3>
           <pre><code>
-            # 多pubish 到官方源
             $ npm adduser
             $ npm publish
           </code></pre>          
-        </section>   
+        </section>
         <section data-background="#a3e2c3" data-transition="fade">
-          <h4>不只是一个 npm 的镜像</h4>
-          <h3 class="fragment" data-fragment-id="0">更是一个企业级npm解决方案</h3>
+          <h4 data-i18n="not-mirror1">不只是一个 npm 的镜像</h4>
+          <h3 class="fragment" data-fragment-id="0"  data-i18n="not-mirror2">更是一个企业级npm解决方案</h3>
         </section>
         <section>
-          <h3>为什么需要私有 NPM  </h3>
+          <h3  data-i18n="private">为什么需要私有 NPM</h3>
             <ul>
-              <li class="fragment" data-fragment-id="0">需要快速、稳定的 npm 服务  </li>
-              <li class="fragment" data-fragment-id="1">发布私有模块  </li>
-              <li class="fragment" data-fragment-id="2">控制私有 npm 内模块质量与安全  </li>
+              <li class="fragment" data-fragment-id="0" data-i18n="private1">需要快速、稳定的 npm 服务</li>
+              <li class="fragment" data-fragment-id="1" data-i18n="private2">发布私有模块</li>
+              <li class="fragment" data-fragment-id="2" data-i18n="private3">控制私有 npm 内模块质量与安全</li>
             </ul>
         </section>
         <section data-transition="fade">
@@ -204,42 +201,42 @@
           <img src="https://i.alipayobjects.com/e/201312/1igDZMnMtx.png">
         </section>
         <section>
-          <h3>同步方式</h3>
+          <h3 data-i18n="sync">同步方式</h3>
           <ul>
-            <li class="orange">每30分钟自动更新库中模块版本</li>
-            <li>cnpm sync 主动同步</li>
-            <li>cnpm install 安装不存在的模块或版本，自动同步</li>
-            <li>通过 <a href="http://cnpmjs.org" target="_blank">web</a> 主动同步</li>
+            <li class="orange" data-i18n="sync5">每30分钟自动更新库中模块版本</li>
+            <li data-i18n="sync2">cnpm sync 主动同步</li>
+            <li data-i18n="sync3">cnpm install 安装不存在的模块或版本，自动同步</li>
+            <li data-i18n="sync4">通过 cnpm 网站主动同步</li>
           </ul>
         </section>        
         <section>
-          <h3>5分钟完成部署</h3>
+          <h3 data-i18n="deploy">5分钟完成部署</h3>
         </section>
         <section data-markdown>
-          ### 依赖
+          ### dependencies
           * Node
           * Mysql  
           * Redis  
-          * qiniu CDN (或者其他私有CDN)  
+          * qiniu CDN (or other CDN)  
         </section>
         <section>
           <h2 class="normal-case">Goodbye, CouchDB !</h2>
         </section>        
-        <section data-markdown>
-          ### 获取代码
-          ```
-          # clone from github
-          $ git clone git://github.com/fengmk2/cnpmjs.org.git $HOME/cnpmjs.org
-          $ cd $HOME/cnpmjs.org
+        <section>
+          <h3 data-i18n="getcode">获取代码</h3>
+          <pre><code>
+# clone from github
+$ git clone git://github.com/fengmk2/cnpmjs.org.git $HOME/cnpmjs.org
+$ cd $HOME/cnpmjs.org
 
-          # create mysql tables
-          $ mysql -u yourname -p
-          mysql> use cnpmjs;
-          mysql> source docs/db.sql
+# create mysql tables
+$ mysql -u yourname -p
+mysql> use cnpmjs;
+mysql> source docs/db.sql
 
-          # create your own config file
-          $ vim config/config.js
-          ```
+# create your own config file
+$ vim config/config.js
+          </code></pre>
         </section>
         <section>
           <h3 class="normal-case">config file</h3>
@@ -271,18 +268,18 @@
           </code></pre>
         </section>
         <section data-markdown>
-          #### 安装依赖
+          #### install the dependencies
           ```
           make install
           ```
-          #### 启动 
+          #### run 
           ```
           $ npm run start
 
           Starting cnpmjs.org ...
           Start nodejs success. PID=27175
           ```
-          #### 查看服务
+          #### check 
           ```bash
           #open registry and web
           # registry
@@ -291,24 +288,24 @@
           open http://localhost:7002          
           ```
         </section>
-        <section data-markdown>
-          #### 使用cnpm作为私有库的客户端
-          ```bash
-          # install cnpm first
-          npm install -g cnpm 
+        <section>
+          <h3 data-i18n="cnpm">使用cnpm作为私有库的客户端</h3>
+          <pre><code>
+# install cnpm first
+npm install -g cnpm 
 
-          # then alias lnpm to cnpm, but change config to your own registry
-          alias lnpm='cnpm --registry=http://localhost:7001\
-           --registryweb=http://localhost:7002\
-           --cache=$HOME/.npm/.cache/lnpm\
-           --userconfig=$HOME/.lnpmrc'
+# then alias lnpm to cnpm, but change config to your own registry
+alias lnpm='cnpm --registry=http://localhost:7001\
+ --registryweb=http://localhost:7002\
+ --cache=$HOME/.npm/.cache/lnpm\
+ --userconfig=$HOME/.lnpmrc'
 
-           #or put this in .zshrc or .bashrc
-           echo "#lnpm alias\nalias lnpm='cnpm --registry=http://localhost:7001\
-           --registryweb=http://localhost:7002\
-           --cache=$HOME/.npm/.cache/lnpm\
-           --userconfig=$HOME/.lnpmrc'" >> $HOME/.zshrc && source $HOME/.zshrc
-          ```
+ #or put this in .zshrc or .bashrc
+ echo "#lnpm alias\nalias lnpm='cnpm --registry=http://localhost:7001\
+ --registryweb=http://localhost:7002\
+ --cache=$HOME/.npm/.cache/lnpm\
+ --userconfig=$HOME/.lnpmrc'" >> $HOME/.zshrc && source $HOME/.zshrc
+          </code></pre>
         </section>
         <section>
           <h2 class="normal-case">Do It Now!</h2>
@@ -323,11 +320,99 @@
         </section>
       </div>
     </div>
+<span style="display:none; visibility:hidden;" id="i18n">
+  <span lang="zh-cn" data-i18n="lang-widget">中文</span>
+  <span lang="en-us" data-i18n="lang-widget">EN</span>
 
+  <span lang="zh-cn" data-i18n="optimize">npm 要如何优化？</span>
+  <span lang="en-us" data-i18n="optimize">How to optimize npm?</span>
+
+  <span lang="zh-cn" data-i18n="problem-1">不熟悉 CouchDB</span>
+  <span lang="en-us" data-i18n="problem-1">Not familiar with CouchDB</span>
+
+  <span lang="zh-cn" data-i18n="problem-2">新的 npm 架构还没有完全想好</span>
+  <span lang="en-us" data-i18n="problem-2">The new architecture of NPM is still up in the air</span>
+
+  <span lang="zh-cn" data-i18n="problem-3">模块的 tgz 包需要单独存储</span>
+  <span lang="en-us" data-i18n="problem-3">All the tgz file need separate storage to CDN</span>
+
+  <span lang="zh-cn" data-i18n="problem-4">我们没有 270,000 $</span>
+  <span lang="en-us" data-i18n="problem-4">We don't have 270,000 $</span>
+
+  <span lang="zh-cn" data-i18n="easy-way">有没有更容易的方法来做这件事情？</span>
+  <span lang="en-us" data-i18n="easy-way">Any easier way to do this?</span>
+
+  <span lang="zh-cn" data-i18n="keep">保持 npm 的所有接口</span>
+  <span lang="en-us" data-i18n="keep">Keep npm's interface</span>
+
+  <span lang="zh-cn" data-i18n="scalable">可扩展</span>
+  <span lang="en-us" data-i18n="scalable">Scalable</span>
+
+  <span lang="zh-cn" data-i18n="mirror">高速、稳定的全量 NPM 镜像</span>
+  <span lang="en-us" data-i18n="mirror">A fast and stable mirror of NPM</span>
+
+  <span lang="zh-cn" data-i18n="sync">同步方式</span>
+  <span lang="en-us" data-i18n="sync">How to sync</span>
+
+  <span lang="zh-cn" data-i18n="sync-1">每30分钟自动增量同步</span>
+  <span lang="en-us" data-i18n="sync-1">Every 30 minutes sync from NPM</span>
+
+  <span lang="zh-cn" data-i18n="sync-2">cnpm sync 主动同步</span>
+  <span lang="en-us" data-i18n="sync-2">use cnpm sync command</span>
+
+  <span lang="zh-cn" data-i18n="sync-3">cnpm install 安装不存在的模块或版本，自动同步</span>
+  <span lang="en-us" data-i18n="sync-3">cnpm install a not exist package, will trigger sync in the backend</span>
+
+  <span lang="zh-cn" data-i18n="sync-4">通过 cnpm 网站主动同步</span>
+  <span lang="en-us" data-i18n="sync-4">Sync by cnpm website</span>
+
+  <span lang="zh-cn" data-i18n="status">cnpm 现状</span>
+  <span lang="en-us" data-i18n="status">Status of cnpm</span>
+
+  <span lang="zh-cn" data-i18n="usage">如何使用</span>
+  <span lang="en-us" data-i18n="usage">Usage</span>
+
+  <span lang="zh-cn" data-i18n="donot">请勿</span>
+  <span lang="en-us" data-i18n="donot">Please not</span>
+
+  <span lang="zh-cn" data-i18n="feedback">回馈社区</span>
+  <span lang="en-us" data-i18n="feedback">feedback the community</span>
+
+  <span lang="zh-cn" data-i18n="not-mirror1">不只是一个 npm 的镜像</span>
+  <span lang="en-us" data-i18n="not-mirror1">Not only a mirror of npm</span>
+
+  <span lang="zh-cn" data-i18n="not-mirror2">更是一个企业级npm解决方案</span>
+  <span lang="en-us" data-i18n="not-mirror2">But a private npm registry and web for enterprise</span>
+
+  <span lang="zh-cn" data-i18n="private">为什么需要私有 NPM</span>
+  <span lang="en-us" data-i18n="private">Why need private npm registry</span>
+
+  <span lang="zh-cn" data-i18n="private1">需要快速、稳定的 npm 服务</span>
+  <span lang="en-us" data-i18n="private1">Need fast and stable npm service</span>
+
+  <span lang="zh-cn" data-i18n="private2">发布私有模块</span>
+  <span lang="en-us" data-i18n="private2">Publish private modules</span>
+
+  <span lang="zh-cn" data-i18n="private3">控制私有 npm 内模块质量与安全</span>
+  <span lang="en-us" data-i18n="private3">Control the modules in private npm</span>
+
+  <span lang="zh-cn" data-i18n="sync5">每30分钟自动更新库中模块版本</span>
+  <span lang="en-us" data-i18n="sync5">Every 30 minutes update the modules in private registry</span>
+
+  <span lang="zh-cn" data-i18n="deploy">5分钟完成部署</span>
+  <span lang="en-us" data-i18n="deploy">Deploy in 5 minutes</span>
+
+  <span lang="zh-cn" data-i18n="getcode">获取代码</span>
+  <span lang="en-us" data-i18n="getcode">Get the code</span>
+
+  <span lang="zh-cn" data-i18n="cnpm">使用cnpm作为私有库的客户端</span>
+  <span lang="en-us" data-i18n="cnpm">Use cnpm as the client of private registry</span>
+</span>
     <script src="../reveal.js/lib/js/head.min.js"></script>
     <script src="../reveal.js/js/reveal.min.js"></script>
     <script src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://cdn.staticfile.org/moment.js/2.4.0/moment.min.js"></script>
+    <script src="../scripts/i18n.js"></script>
     <script>
 
       // Full list of configuration options available here:
@@ -365,6 +450,10 @@
         $('#download-month').html(humanize(data.download.thismonth));
         $('#last-sync-time').html(moment(data.last_sync_time).format('YYYY-MM-DD HH:mm:ss'));
         $('#sync-suceess').html(data.success_sync_num);
+      });
+
+      $(function () {
+        i18n('en-us');
       });
     </script>
   </body>

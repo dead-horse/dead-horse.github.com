@@ -192,3 +192,8 @@ ul.check li.checked:before {
 .reveal .normal-case {
   text-transform: none;
 }
+
+.reveal h1, .reveal h2, .reveal h3,
+.reveal h4, .reveal h5, .reveal h6 {
+  text-transform: none;
+}
