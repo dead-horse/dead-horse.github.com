@@ -35,6 +35,8 @@ layout: default
 [IOS 7 视频教程](https://itunes.apple.com/us/course/developing-ios-7-apps-for/id733644550)  
 [使用CocoaPods来做iOS程序的包依赖管理](http://blog.devtang.com/blog/2012/12/02/use-cocoapod-to-manage-ios-lib-dependency/)  
 [Essential iOS 7 Developer’s Guide](http://www.doubleencore.com/2013/09/essential-ios-7-developers-guide/)  
+[iOS 7 Best Practices; A Weather App Case
+Study](http://www.raywenderlich.com/55384/ios-7-best-practices-part-1)  
 
 ## linux  
 [Linux系统信息查看命令大全](http://tech.idv2.com/2008/01/11/linux-sysinfo-cmds/)  
