@@ -40,3 +40,7 @@ Study](http://www.raywenderlich.com/55384/ios-7-best-practices-part-1)
 
 ## linux  
 [Linux系统信息查看命令大全](http://tech.idv2.com/2008/01/11/linux-sysinfo-cmds/)  
+
+## Web  
+[浏览器的工作原理](http://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/)  
+
