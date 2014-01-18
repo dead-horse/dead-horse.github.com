@@ -79,7 +79,7 @@ a:hover {
   text-decoration: underline;
 }
 
-body ul, body ol: {
+.body ul, .body ol: {
 	padding-left: 30px;
 	padding-bottom: 20px;
 }
