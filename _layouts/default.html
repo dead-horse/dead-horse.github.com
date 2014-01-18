@@ -96,6 +96,15 @@
 <script>
 hljs.initHighlightingOnLoad();
 $('a').addClass('buzz');
+$('a').click(function () {
+  var redirect = $(this).attr('href');
+  if (redirect.indexOf('http') === 0) {
+    window.open(redirect);
+    return false;
+  }
+  return true;
+});
+
 </script>
 </body>
 </html>
