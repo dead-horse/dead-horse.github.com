@@ -1,7 +1,7 @@
 ---
 layout : post
 category : nodejs
-title : Node.js 依赖管理与项目构建工具
+title : Node.js 项目的依赖管理
 summary : 谈谈开发过程中一些
 keywords : nodejs,C++ addon,node-hsf
 author : dead_horse
