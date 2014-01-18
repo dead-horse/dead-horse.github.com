@@ -15,7 +15,7 @@ header, footer, section, aside, nav, article {
 /* standard body */
 body {
 	margin: 0 auto;
-	width: 960px;
+	width: 1280px;
 	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	font-size: 17px;
 	line-height: 30px;
@@ -45,26 +45,44 @@ img.alignright {
 /* Hx tags */
 
 h1 {
-	font-size: 28px;
-	padding: 20px 0;
+	font-size: 32px;
+	padding: 30px 0;
 	line-height: 40px;
+	margin-left: -30px;
 	}
 
 h2 {
-	font-size: 24px;
-	padding: 20px 0;
+	font-size: 28px;
+	padding: 30px 0;
 	line-height: 36px;
+	margin-left: -30px;
 	}
 
 h3 {
-	font-size: 18px;
-	padding: 10px 0;
+	font-size: 24px;
+	padding: 20px 0;
 	line-height: 30px;
+	margin-left: -20px;
 	}
 
 p {
 	padding-bottom: 10px;
 	}
+
+pre {
+	margin: 15px;
+}
+
+code {
+	overflow: scroll;
+	background: #f0f0f0;
+	color: #FF4136;
+	margin: 0 3px 0 3px;
+	padding: 0 3px 0 3px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 10px;
+}
 
 a{
   -moz-transition: color 0.3s;
@@ -79,28 +97,17 @@ a:hover {
   text-decoration: underline;
 }
 
-.body ul, .body ol: {
-	padding-left: 30px;
-	padding-bottom: 20px;
-}
-
 /* nav */
 nav {
-	position: absolute;
-	width: 960px;
-	background: url("../images/navbg.png");
+	width: 1280px;
 
 	/* curved border radius */
-	-moz-border-radius-bottomleft: 10px;
-	-moz-border-radius-bottomright: 10px;
-	-webkit-border-bottom-right-radius: 10px;
-	-webkit-border-bottom-left-radius: 10px;
-	margin-top: -50px;
+	margin-top: 10px;
 	}
 
 nav ul {
 	margin: 0 auto;
-	width: 960px;
+	width: 1280px;
 	list-style: none;
 	}
 
@@ -112,99 +119,26 @@ nav ul li a {
 	display: block;
 	margin-right: 20px;
 	width: 140px;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
-	line-height: 44px;
+	line-height: 50px;
 	text-align: center;
 	text-decoration: none;
 	color: #ddee18;
 	}
 
-nav ul li a:hover {
-	color: #fff;
-	}
-
-nav ul li.selected a {
-	color: #fff;
-	}
-
-nav ul li.subscribe a {
-	margin-left: 20px;
-	padding-left: 33px;
-	text-align: left;
-	background: url("../images/rss.png") left center no-repeat;
-	}
-
-
-
-/* intro */
-
-#intro {
-	position: relative;
-	margin-bottom: 50px;
-	padding: 44px;
-	background: url("../images/introbkg.jpg");
-	width: 872px;
-        height: 116px;
-        /* background size */
-	-webkit-background-size: 100%;
-	-o-background-size: 100%;
-	-khtml-background-size: 100%;
-
-
-	/* curved border radius */
-	-moz-border-radius-topright: 10px;
-	-moz-border-radius-topleft: 10px;
-	-webkit-border-top-right-radius: 10px;
-	-webkit-border-top-left-radius: 10px;
-	}
-
-#intro h2, #intro p {
-	position: relative;
-	z-index: 9999;
-	width: 350px;
-	}
-
-#intro h2 {
-	padding: 0 0 20px 0;
-	font-weight: normal;
-	color: #fff;
-	}
-
-#intro p {
-	padding: 0;
-	color: #d9f499;
-	}
-
-#intro img {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 556px;
-	height: 100%;
-
-	/* curved border radius */
-	-moz-border-top-right-radius: 10px;
-	-moz-border-top-left-radius: 10px;
-	-webkit-border-top-right-radius: 10px;
-	-webkit-border-top-left-radius: 10px;
-	}
 
 /* content and sidebar layout */
 
 #content {
 	float: left;
-	width: 610px;
+	width: 930px;
 	margin:10px 5px 30px 0;
 	padding:5px 20px 30px 20px;
-	background-color: #f2f2f2;
         min-height: 500px;
-/* curved border radius */
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
 }
 #content .date{
-  margin-left: 500px;
+  margin-left: 820px;
 }
 #content ul{
   margin-left: 30px;
@@ -212,21 +146,7 @@ nav ul li.subscribe a {
 #content li{
   margin : 2px;
 }
-#content pre{
-  overflow: auto;
-  padding: 10px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  background-color: #ddd;
-  margin: 10px;
-}
-article code {
-  font-size: 90%!important;
-  color: #444!important;
-  padding: 0 .2em!important;
-  border: 1px solid #DEDEDE!important;
-  border-image: initial;
-}
+
 aside {
 	float: right;
 	text-align: left;
@@ -241,6 +161,14 @@ aside {
 	color: #777;
 	}
 
+.articlecontent .post {
+	margin-bottom: 50px;
+}
+
+.articlecontent .post ol, .articlecontent .post ul {
+	margin-left: 40px;
+	margin-bottom: 30px;
+}
 
 .articlecontent header p a:hover {
 	text-decoration: none;
@@ -271,10 +199,16 @@ aside section {
 	-webkit-border-radius: 20px;
 	}
 
-aside section ul {
-	margin: 0 0 0 20px;
-	color: #4F7E12;
-	}
+aside section ul li{
+	list-style-type:none;
+}
+
+aside section ul li a {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 240px;
+}
 
 aside section ul li a:hover {
 	text-decoration: underline;
@@ -283,9 +217,7 @@ aside section ul li a:hover {
 /* footer */
 footer {
 	clear: both;
-	background: #222;
-	width: 960px;
-	color: #fff;
+	width: 1280px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 	/* curved border radius */
@@ -295,16 +227,10 @@ footer {
 
 footer p {
   text-align: right;
-  font-size: 11px;
 	padding-right: 20px;
 	}
 
-footer a {
-	color: #999;
-	}
-
 footer a:hover {
-	color: #FFF;
 	text-decoration: none;
 	}
 
@@ -326,4 +252,51 @@ footer p{
 	right: 0px;
 	top: 0px;
 	background-image: url("../images/fork.gif");
+}
+
+/* Buzz */
+
+@-webkit-keyframes buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+@keyframes buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    -ms-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    -ms-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+.buzz {
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.buzz:hover {
+  -webkit-animation-name: buzz;
+  animation-name: buzz;
+  -webkit-animation-duration: .15s;
+  animation-duration: .15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
