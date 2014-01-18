@@ -16,7 +16,9 @@ header, footer, section, aside, nav, article {
 body {
 	margin: 0 auto;
 	width: 960px;
-	font: 14px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
+	font-size: 17px;
+	line-height: 30px;
 	}
 
 /* standard alignments */

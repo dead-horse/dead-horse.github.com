@@ -212,4 +212,4 @@ $ make autod
 ```
 就完成了 `async` 模块的安装，并将最新的 async 版本写入到了 package.json 文件中。
 
-看看 [cnpmjs.org](https://github.com/cnpm/cnpmjs.org/blob/master/package.json#L23) 通过 autod 管理依赖版本的效果吧！
+最后，来看看 [cnpmjs.org](https://github.com/cnpm/cnpmjs.org/blob/master/package.json#L23) 通过 autod 管理依赖版本的效果吧！
