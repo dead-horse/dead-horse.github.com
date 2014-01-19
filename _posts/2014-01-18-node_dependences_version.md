@@ -178,7 +178,7 @@ autod 同时可以根据我们传递的一些选项和参数，来直接更新 p
 
 通过这个工具，我们可以很轻松的跟踪到所有依赖的最新版本，同时可以自动更新我们的 package.json 文件，新引入的模块也不需要手动去更新 package.json 文件了，一切都可以交给 autod 来完成。
 
-![autod pic](http://ww1.sinaimg.cn/large/69c1d4acgw1ecnugf8cxdj20e10hc40b.jpg)
+![autod pic](http://ww1.sinaimg.cn/large/69c1d4acgw1ecoop1tvnsj20df0hf404.jpg)
 
 ### 集成到 make
 
