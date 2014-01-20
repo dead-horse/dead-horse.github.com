@@ -61,8 +61,7 @@
       <ul>
       {% for post in site.posts %}
       <li>
-        <img /><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        <span style="display:none;" class="post-keywords">{{ post.keywords }}</span>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
       </li>
       {% endfor %}
       </ul>

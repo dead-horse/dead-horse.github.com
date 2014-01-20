@@ -15,11 +15,48 @@ header, footer, section, aside, nav, article {
 /* standard body */
 body {
 	margin: 0 auto;
-	width: 1280px;
 	font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 	font-size: 17px;
 	line-height: 30px;
 	}
+
+@media screen and (max-width: 1000px) {
+  body {
+    width: 960px;
+  }
+
+  #content {
+    width: 660px;
+  }
+  aside {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  body {
+    width: 1100px;
+  }
+
+  #content {
+    width: 800px;
+  }
+  aside {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    width: 1280px;
+  }
+  #content {
+    width: 930px;
+  }
+  aside {
+    width: 300px;
+  }
+}
 
 /* standard alignments */
 .alignleft {
@@ -99,15 +136,12 @@ a:hover {
 
 /* nav */
 nav {
-	width: 1280px;
-
 	/* curved border radius */
 	margin-top: 10px;
 	}
 
 nav ul {
 	margin: 0 auto;
-	width: 1280px;
 	list-style: none;
 	}
 
@@ -132,13 +166,12 @@ nav ul li a {
 
 #content {
 	float: left;
-	width: 930px;
 	margin:10px 5px 30px 0;
 	padding:5px 20px 30px 20px;
         min-height: 500px;
 }
 #content .date{
-  margin-left: 820px;
+  margin-left: 80%;
 }
 #content ul{
   margin-left: 30px;
@@ -150,7 +183,6 @@ nav ul li a {
 aside {
 	float: right;
 	text-align: left;
-	width: 300px;
 	margin-bottom :30px;
 	padding:0;
 	}
@@ -207,7 +239,7 @@ aside section ul li a {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	width: 240px;
+	width: 100%;
 }
 
 aside section ul li a:hover {
@@ -217,7 +249,6 @@ aside section ul li a:hover {
 /* footer */
 footer {
 	clear: both;
-	width: 1280px;
 	margin-top: 20px;
 	margin-bottom: 10px;
 	/* curved border radius */
