@@ -20,7 +20,20 @@ body {
 	line-height: 30px;
 	}
 
-@media screen and (max-width: 1000px) {
+/*style for < 960 */
+body {
+  width: 90%;
+}
+
+#content {
+  width: 100%;
+}
+
+aside {
+  display: none;
+}
+
+@media only screen and (min-width: 960px) {
   body {
     width: 960px;
   }
@@ -28,33 +41,37 @@ body {
   #content {
     width: 660px;
   }
+
   aside {
-    width: 250px;
+    width: 210px;
+    display: block;
   }
 }
 
-@media screen and (max-width: 1280px) {
+@media only screen and (min-width: 1100px) {
   body {
     width: 1100px;
   }
 
   #content {
-    width: 800px;
+    width: 760px;
   }
   aside {
     width: 250px;
+    display: block;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media only screen and (min-width: 1280px) {
   body {
     width: 1280px;
   }
   #content {
-    width: 930px;
+    width: 900px;
   }
   aside {
     width: 300px;
+    display: block;
   }
 }
 
@@ -85,25 +102,18 @@ h1 {
 	font-size: 32px;
 	padding: 30px 0;
 	line-height: 40px;
-	margin-left: -30px;
 	}
 
 h2 {
 	font-size: 28px;
-	padding: 30px 0;
+	padding: 30px 5px;
 	line-height: 36px;
-	margin-left: -30px;
 	}
 
 h3 {
 	font-size: 24px;
-	padding: 20px 0;
+	padding: 20px 10px;
 	line-height: 30px;
-	margin-left: -20px;
-	}
-
-p {
-	padding-bottom: 10px;
 	}
 
 pre {
@@ -167,7 +177,7 @@ nav ul li a {
 #content {
 	float: left;
 	margin:10px 5px 30px 0;
-	padding:5px 20px 30px 20px;
+	padding:5px 0 30px 20px;
         min-height: 500px;
 }
 #content .date{
@@ -198,7 +208,7 @@ aside {
 }
 
 .articlecontent .post ol, .articlecontent .post ul {
-	margin-left: 40px;
+	margin-left: 50px;
 	margin-bottom: 30px;
 }
 
@@ -206,6 +216,10 @@ aside {
 	text-decoration: none;
 	color: #000;
 	}
+
+.articlecontent p {
+  padding: 0 0 10px 20px;
+}
 
 /* multiple columns */
 .articlecontent div {
