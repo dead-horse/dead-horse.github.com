@@ -33,6 +33,9 @@ aside {
   display: none;
 }
 
+#clicki_widget_4831 {
+  display: none;
+}
 @media only screen and (min-width: 960px) {
   body {
     width: 960px;
@@ -44,6 +47,10 @@ aside {
 
   aside {
     width: 210px;
+    display: block;
+  }
+
+  #clicki_widget_4831 {
     display: block;
   }
 }
@@ -60,6 +67,10 @@ aside {
     width: 250px;
     display: block;
   }
+
+  #clicki_widget_4831 {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 1280px) {
@@ -71,6 +82,10 @@ aside {
   }
   aside {
     width: 300px;
+    display: block;
+  }
+
+  #clicki_widget_4831 {
     display: block;
   }
 }
@@ -162,7 +177,7 @@ nav ul li {
 nav ul li a {
 	display: block;
 	margin-right: 20px;
-	width: 140px;
+	width: 100px;
 	font-size: 20px;
 	font-weight: bold;
 	line-height: 50px;
