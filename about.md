@@ -2,7 +2,8 @@
 layout: default
 ---
 # About Me
-网名：**dead_horse/死马**
+
+**dead_horse/死马**
 
 新浪微博: [@2B码农死小马](http://weibo.com/deadhorse/)
 
@@ -12,4 +13,4 @@ layout: default
 
 工作：[淘宝共享数据平台](http://www.tbdata.org/) web/Node.js开发工程师
 
-
+tags: web, Node.js, javascript

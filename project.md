@@ -10,7 +10,6 @@ layout: default
 
 * [3D color analytic system](http://color3d.herokuapp.com/): Analyze image's color in 3D.
 
-* [flappy-bird](http://deadhorse.me/flappy-bird/): Cheap copy the flappy bird into rapheal in one hour.
-
+* [web-camera](https://github.com/dead-horse/web-camera): Esay way to shot every website, power by phantomjs.
 
 ## More projects can be see in my [github](https://github.com/dead-horse).  Pull requests and stars are welcome.
