@@ -1,9 +1,9 @@
 ---
 layout : post
-category : nodejs
-title : Node.js 项目的依赖管理
-summary : 谈谈开发过程中一些
-keywords : nodejs,C++ addon,node-hsf
+category : nodejs,js
+title : global.isNaN vs Number.isNaN
+summary : global.isNaN 和 Number.isNaN 的区别
+keywords : nodejs,js,NaN
 author : dead_horse
 ---
 ## global.isNaN vs Number.isNaN

@@ -2,8 +2,8 @@
 layout : post
 category : nodejs
 title : Node.js 项目的依赖管理
-summary : 谈谈开发过程中一些
-keywords : nodejs,C++ addon,node-hsf
+summary : 谈谈开发过程中一些依赖管理的经验
+keywords : nodejs,autod,dependencies
 author : dead_horse
 ---
 ## 依赖管理
