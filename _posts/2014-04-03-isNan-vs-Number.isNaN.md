@@ -95,3 +95,5 @@ Number.isNaN("blabla"); // e.g. this would have been true with isNaN
 --
 
 在使用 `isNaN` 之前，请务必想清楚检查的目的，之后再选择用哪个方法进行判断。
+最后附上一个类型判断的 node
+模块：[is-type-of](https://github.com/node-modules/is-type-of)。
