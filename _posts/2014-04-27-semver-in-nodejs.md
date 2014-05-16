@@ -6,7 +6,6 @@ summary : 如何确定一个模块的版本？如何选择引用一个模块的�
 keywords : nodejs,semver,package
 author : dead_horse
 ---
-## node.js 中的版本管理
 
 ### semver
 
