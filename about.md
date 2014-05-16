@@ -11,6 +11,8 @@ layout: default
 
 学校：[华南理工大学](http://www.scut.edu.cn/)
 
-工作：[淘宝共享数据平台](http://www.tbdata.org/) web/Node.js开发工程师
+工作：[天猫前端](http://tmall.com/) web/Node.js开发工程师
 
 tags: web, Node.js, javascript
+
+**Talk is cheap. Show me the code.**
