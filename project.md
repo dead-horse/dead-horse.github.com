@@ -6,7 +6,7 @@ layout: default
 
 * [cnpmjs.org](http://cnpmjs.org/): Private npm registry and web for Enterprise.
 
-* [kick-off-koa](https://github.com/koajs/kick-off/kia): An intro to Koa via a set of self-guided workshops.
+* [kick-off-koa](https://github.com/koajs/kick-off-koa): An intro to Koa via a set of self-guided workshops.
 
 * [the nature of code in raphael](http://deadhorse.me/the-nature-of-code-raphael/): Port the nature of code examples to raphael.
 
