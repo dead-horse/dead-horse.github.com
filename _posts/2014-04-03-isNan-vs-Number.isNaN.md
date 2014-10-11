@@ -1,6 +1,6 @@
 ---
 layout : post
-category : nodejs,js
+category : nodejs
 title : global.isNaN vs Number.isNaN
 summary : global.isNaN 和 Number.isNaN 的区别
 keywords : nodejs,js,NaN
