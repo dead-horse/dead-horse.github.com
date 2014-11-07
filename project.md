@@ -4,6 +4,8 @@ layout: default
 
 # Projects
 
+* [koa](http://koajs.com): Next generation web framework for node.js.
+
 * [cnpmjs.org](http://cnpmjs.org/): Private npm registry and web for Enterprise.
 
 * [kick-off-koa](https://github.com/koajs/kick-off-koa): An intro to Koa via a set of self-guided workshops.
