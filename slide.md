@@ -4,6 +4,7 @@ layout: default
 
 # Talks
 
+* 2014.12 [koa——不仅仅是 generator](http://deadhorse.me/slides/koa-not-only-generator.pdf) @ [nodeparty 广州](https://github.com/cnodejs/nodeparty/issues/8)
 * 2014.11 [koa.js](http://deadhorse.me/slides/koa.pdf) @ [nodeparty 杭州](https://github.com/cnodejs/nodeparty/issues/7)
 * 2014.10 [企业级 NPM 在阿里的实践](http://deadhorse.me/slides/npm-enterprise-in-ali.pdf) @ [D2](http://d2forum.alibaba-inc.com/)
 * 2014.10 [另一个角度看前后端分离](https://speakerdeck.com/deadhorse/ling-ge-jiao-du-kan-qian-hou-duan-fen-chi-node-dot-js-yin-fa-de-qian-duan-bian-ge) @ [QCon 上海](http://2014.qconshanghai.com/speakers/)
