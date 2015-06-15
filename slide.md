@@ -4,7 +4,7 @@ layout: default
 
 # Talks
 
-* 2015.05 [Maintainable Node.js](http://deadhorse.me/maintainable-nodejs/#/) @ [SegmentFault D-Day 杭州]
+* 2015.05 [Maintainable Node.js](http://deadhorse.me/maintainable-nodejs/#/) @ [SegmentFault D-Day 杭州](http://segmentfault.com/d-day)
 * 2014.12 [koa——不仅仅是 generator](http://deadhorse.me/slides/koa-not-only-generator.pdf) @ [nodeparty 广州](https://github.com/cnodejs/nodeparty/issues/8)
 * 2014.11 [koa.js](http://deadhorse.me/slides/koa.pdf) @ [nodeparty 杭州](https://github.com/cnodejs/nodeparty/issues/7)
 * 2014.10 [企业级 NPM 在阿里的实践](http://deadhorse.me/slides/npm-enterprise-in-ali.pdf) @ [D2](http://d2forum.alibaba-inc.com/)
